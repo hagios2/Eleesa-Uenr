@@ -11,10 +11,18 @@
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
 });
-
+ */
 Route::auth();
 
+Route::get('/news', 'PagesController@getNews');
+
+Route::get('/history', 'PagesController@getHistory');
+
+Route::get('/', 'PagesController@index');
+
 Route::get('/home', 'HomeController@index');
+
+Route::resource('admin', 'AdminController');
