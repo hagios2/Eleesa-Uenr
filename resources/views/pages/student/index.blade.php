@@ -10,7 +10,7 @@
 
         @include('errors.errors')
 
-        <form action="/" method="post">
+        <form action="/courses" method="post">
             {{ csrf_field() }}
         
             <div class="form-group">

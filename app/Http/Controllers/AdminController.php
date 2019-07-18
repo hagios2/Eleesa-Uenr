@@ -9,6 +9,7 @@ use App\Semesters;
 use App\Materials;
 use App\Programs;
 use App\Http\Requests\AdminFormRequest;
+use App\Courses;
 
 class AdminController extends Controller
 {
@@ -58,10 +59,10 @@ class AdminController extends Controller
                 'course' => $request->course
             ])->id;
         }
-   
+    
         if($request->hasFile('Book'))
         {
-            $book = $this->fileSaver('Book', $course_id);
+           $book = $this->fileSaver('Book', $course_id);
         }
 
         if($request->hasFile('Slide'))
@@ -135,12 +136,17 @@ class AdminController extends Controller
         //get file name
         $fileNameToStore = request()->file($file)->getClientOriginalName();
 
-        //path to store file
+        //get level for course 
+        $course_level = Semesters::find(request()->semester)->level;
 
+        //path to store file
         if(request()->has('combined')){
-            request()->file($file)->move('storage/Combined/'.request()->level.'/'.$file.'/'.$id.'/', $fileNameToStore);
+
+            request()->file($file)->move('storage/Combined/'.$course_level->level.'/'.$file.'/'.$id.'/', $fileNameToStore);
+        
         }else{
-            request()->file($file)->move('storage/'.request()->program.'/'.request()->level.'/'.$file.'/'.$id.'/', $fileNameToStore);
+            
+            request()->file($file)->move('storage/'.request()->program.'/'.$course_level->level.'/'.$file.'/'.$id.'/', $fileNameToStore);
         }
         
         return $fileNameToStore;

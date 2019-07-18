@@ -22,4 +22,9 @@ class PagesController extends Controller
     {
         return view('pages.student.history');
     } 
+
+    public function getConstitution()
+    {
+        response()->download('storage/constitution/eleesa constitutioin.pdf');
+    }
 }

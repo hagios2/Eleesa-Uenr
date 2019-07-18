@@ -11,6 +11,9 @@
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
           <li data-target="#carousel-example-generic" data-slide-to="1"></li>
           <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+
         </ol>
       
         <!-- Wrapper for slides -->
@@ -43,6 +46,13 @@
                     <h3>Caption Text</h3>
                 </div>
            </div>
+
+           <div class="item">
+                <img src="{{ asset('storage/images/tab1_image.jpg') }}" alt="...">
+                <div class="carousel-caption">
+                    <h3>Caption Text</h3>
+                </div>
+           </div>
         
         </div>
       
@@ -56,11 +66,19 @@
       </div> <!-- Carousel -->
           
 
-      <div class="card">
-          <div class="card-body">ELEESA SERMINA</div>
+      <div class="card" style="margin-top:10px">
+          <h2 class="card-title">ELEESA SERMINA</h2>
 
-          
+          <img width="50%" class="rounded-thumbnail" src="{{ asset('storage/images/image_10.jpg') }}" alt="image"> 
+
       </div>
+
+      <div class="card" style="margin-top:10px">
+            <h2 class="card-title">ELEESA DINNER</h2>
+  
+            <img width="50%" class="rounded-thumbnail" src="{{ asset('storage/images/image_10.jpg') }}" alt="image"> 
+  
+       </div>
     
     
 @endsection

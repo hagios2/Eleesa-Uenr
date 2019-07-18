@@ -22,7 +22,7 @@
 
             <form action="/admin" method="POST" enctype="multipart/form-data">
                 
-            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+            {{ csrf_field() }}
                 
             <div class="form-group">
                     <label for="InputCourse">Program</label>
@@ -31,7 +31,7 @@
                         <option value="#">Select a Program</option>
 
                         @foreach ($programs as $prog)
-                            <option {{ (old('program') == $prog->id) ? 'selected' : '' }} value="{{ $prog->id }}">{{ $prog->program }}</option>
+                            <option {{ (old('program') == $prog->id) ? 'selected' : '' }} value="{{ $prog->program }}">{{ $prog->program }}</option>
                         @endforeach
                     </select>
                 
@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <label for="InputCombined">Specify Combined Course</label><br>
 
-                    <input type="checkbox" name="combined" id="combined"> Combined
+                    <input type="checkbox" name="combined" value="1" id="combined"> Combined
 
                 </div>
 

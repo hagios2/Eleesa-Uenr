@@ -84,6 +84,8 @@
         @yield('content')
     
     </div>
+
+    @include('includes.footer')
     
 
     <!-- JavaScripts -->

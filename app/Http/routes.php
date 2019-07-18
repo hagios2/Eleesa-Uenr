@@ -17,12 +17,16 @@
  */
 Route::auth();
 
+Route::get('/', 'PagesController@index');
+
 Route::get('/news', 'PagesController@getNews');
 
 Route::get('/history', 'PagesController@getHistory');
 
-Route::get('/', 'PagesController@index');
+Route::get('/constitution', 'PagesController@getConstitution');
 
 Route::get('/home', 'HomeController@index');
 
 Route::resource('admin', 'AdminController');
+
+Route::post('/courses', 'CoursesController@getCourses');
