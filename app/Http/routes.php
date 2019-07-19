@@ -23,10 +23,14 @@ Route::get('/news', 'PagesController@getNews');
 
 Route::get('/history', 'PagesController@getHistory');
 
-Route::get('/constitution', 'PagesController@getConstitution');
+Route::get('/download/constitution', 'MaterialsDownloadController@downloadConstitution');
 
 Route::get('/home', 'HomeController@index');
 
 Route::resource('admin', 'AdminController');
 
-Route::post('/courses', 'CoursesController@getCourses');
+Route::post('/courses', 'CoursesController@getCourse');
+
+Route::get('/{course}/materials', 'CoursesController@getCourseMaterials');
+
+Route::get('material/{id}/{type}/download', 'MaterialsDownloadController@downloadMaterial');

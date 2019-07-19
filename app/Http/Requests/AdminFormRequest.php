@@ -29,9 +29,9 @@ class AdminFormRequest extends Request
             'semester' => 'required',
             'course' => ['required', 'string'],
             'course_code' => ['required', 'string'],
-            'Book' => ['required','mimes:pdf'],
-            'Slide' => ['required','mimes:pdf'],
-            'Pasco' => ['required','mimes:pdf'],
+            'Book' => ['mimes:pdf'],
+            'Slide' => ['mimes:pdf'],
+            'Pasco' => ['mimes:pdf'],
         ];
     }
 }

@@ -13,7 +13,7 @@ class Semesters extends Model
 
     public function program()
     {
-        return $this->belongsTo(Program::class);
+        return $this->belongsTo(Programs::class, 'prog_id');
     }
 
     public function courses()

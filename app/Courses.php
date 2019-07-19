@@ -13,8 +13,8 @@ class Courses extends Model
         return $this->belongsTo(Semester::class);
     }
 
-    public function materials()
+    public function material()
     {
-        return $this->hasMany(materials::class, 'course_id');
+        return $this->hasMany(Materials::class, 'course_id');
     }
 }

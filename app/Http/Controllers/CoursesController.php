@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Semesters;
 use App\Courses;
+use App\Materials;
 
 class CoursesController extends Controller
 {
-    public function getCourses(Request $request)
+
+    public function getCourse(Request $request)
     {
         $this->validate($request, [
             'program' => 'required',
@@ -32,8 +34,40 @@ class CoursesController extends Controller
 
         $courses = Courses::where('sem_id' , $sem_id)
         
-            ->orWhere([['sem_id', $com_sem], ['combined', 'true']])->get();     
+            ->orWhere([['sem_id', $com_sem], ['combined', '1']])->get();
 
-        return view('pages.student.courses', ['courses' => $courses]);
+            return view('pages.student.courses', ['courses'=> $courses]);
     }
+
+
+    public function getCourseMaterials($id)
+    {
+
+        $materials = Courses::find($id)->material;
+
+        static $book = 0;
+        static $slide = 0;
+        static $pasco = 0;
+
+        foreach($materials as $material)
+        {
+            if($material->book != null)
+            {
+                $book++;
+            }
+
+            if($material->slide != null)
+            {
+                $slide++;
+            }
+
+            if($material->pasco != null)
+            {
+                $pasco++;
+            }
+
+        }
+
+       return view('pages.student.c_materials', \compact(['materials' , 'book', 'slide', 'pasco']));
+    } 
 }

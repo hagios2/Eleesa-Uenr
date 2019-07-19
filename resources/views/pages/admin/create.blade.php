@@ -82,13 +82,13 @@
                 <div class="form-group" id="t_course">
                     <label for="InputCourse">Course</label>
 
-                    <input class="form-control" type="text" name="course" placeholder="Enter course code and name" value="{{ old('course') }}">
+                    <input class="form-control" type="text" name="course" placeholder="Enter course name" value="{{ old('course') }}">
 
-            {{--           <div>
-                        <label for="Prompt"><h3>Add resource(s) to existing Course?</h3></label>
+                    <div>
+                       <label for="Prompt"><h3>Add resource(s) to existing Course?</h3></label>
 
                         <a class="btn btn-primary" onclick="fieldSwitcher(t_course)">Switch</a>
-                    </div> --}}
+                    </div> 
                 </div>
 
                 
@@ -128,7 +128,7 @@
 
 @endsection
 
-{{-- @section('extra_js')
+@section('extra_js')
     <script>
         function fieldSwitcher(id)
         {
@@ -143,4 +143,3 @@
     </script>
 
 @endsection
- --}}
