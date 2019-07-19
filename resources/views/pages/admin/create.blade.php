@@ -84,11 +84,11 @@
 
                     <input class="form-control" type="text" name="course" placeholder="Enter course name" value="{{ old('course') }}">
 
-                    <div>
+                {{--      <div>
                        <label for="Prompt"><h3>Add resource(s) to existing Course?</h3></label>
 
                         <a class="btn btn-primary" onclick="fieldSwitcher(t_course)">Switch</a>
-                    </div> 
+                    </div>   --}}
                 </div>
 
                 
