@@ -69,7 +69,6 @@ class MaterialsDownloadController extends Controller
             $path = 'storage/'.$program.'/'.$level.'/'.$materialType.'/'.$course->id.'/'.$filename;
         }
        
-
        return $this->download($path, $filename);
 
         return back();

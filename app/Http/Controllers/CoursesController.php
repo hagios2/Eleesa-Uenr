@@ -28,15 +28,22 @@ class CoursesController extends Controller
             
             ['level_id', $request->level], ['sem', $sem]])->value('id');
       
-        //get same sem for other course to query for combined courses
+        return redirect('/'.$sem_id.'/courses');
+    }
 
-        $com_sem = ($sem_id <= 8) ? $sem_id + 8 : $sem_id - 8;
 
-        $courses = Courses::where('sem_id' , $sem_id)
-        
-            ->orWhere([['sem_id', $com_sem], ['combined', '1']])->get();
+    public function redirectCoursesWithId($sem_id)
+    {
+         //get same sem for other course to query for combined courses
 
-            return view('pages.student.courses', ['courses'=> $courses]);
+         $com_sem = ($sem_id <= 8) ? $sem_id + 8 : $sem_id - 8;
+
+         $courses = Courses::where('sem_id' , $sem_id)
+         
+             ->orWhere([['sem_id', $com_sem], ['combined', '1']])->get();
+ 
+             return view('pages.student.courses',  compact('courses'));
+
     }
 
 

@@ -24,7 +24,7 @@
                 
             {{ csrf_field() }}
                 
-            <div class="form-group">
+            <div class="form-group" id="non_existing">
                     <label for="InputCourse">Program</label>
             
                     <select required name="program" id="program" class="form-control">
@@ -57,20 +57,6 @@
                     </select>
                         
                 </div>
-{{-- 
-                <div class="form-group" id="s_course">
-                    <label for="InputCourse">
-                        Course
-                    </label>
-
-                    <select name="program" id="program" class="form-control">
-                        <option value="#">Select Course</option>
-                    </select>
-
-                    <div class="form-group">
-                        <label for="Prompt"><h3>Cant find a Course?</h3></label>
-                    </div>
-                </div> --}}
 
                 <div class="form-group" id="course_code">
                     <label for="Course_code">Course</label>
@@ -84,14 +70,7 @@
 
                     <input class="form-control" type="text" name="course" placeholder="Enter course name" value="{{ old('course') }}">
 
-                {{--      <div>
-                       <label for="Prompt"><h3>Add resource(s) to existing Course?</h3></label>
-
-                        <a class="btn btn-primary" onclick="fieldSwitcher(t_course)">Switch</a>
-                    </div>   --}}
                 </div>
-
-                
 
                 <div class="form-group">
                         <label for="inputCourseBook">
@@ -121,21 +100,101 @@
 
                 <button class="btn btn-primary" type="submit">Add Course</button>
 
+
+            <a href="" class="btn btn-success" onclick="formSwitcher('non_existing')">Add Materials</a>
+
             </form>
 
         </div>
     </div>
 
+    {{-- Existing Courses --}}
+
+    <div id="existing" style="display:none;">
+        
+        <form action="" method="post">
+            {{ csrf_field() }}
+
+            <div>
+
+                <input type="hidden" name="existing" value="1">
+            
+            </div>
+            
+            <div class="form-group">
+                <label for="InputCourse">Courses</label>
+                
+                <select  required name="course" id="course" class="form-control">
+                    <option value="#">Select Course</option>
+                        
+                    @foreach ($courses as $existingCourse)
+                        <option {{ (old('course') == $existingCourse->id) ? 'selected' : '' }} value="{{ $existingCourse->id }}">{{ $existingCourse->course }}</option>
+                    @endforeach
+                </select>
+                    
+            </div>
+
+            <h3 class="title">Add Course Materials</h3>
+
+
+            <div class="form-group">
+                    <label for="inputCourseBook">
+                        Upload Book
+                    </label>
+
+                    <input type="file" name="Book" id="Book" class="form-control-file" value="{{ old('Book') }}">
+            </div>
+            
+
+            <div class="form-group">
+                    <label for="inputCourseSlide">
+                        Upload Slide
+                    </label>
+
+                    <input type="file" name="Slide" value="{{ old('Slide') }}" id="Slide" class="form-control-file">
+                </div>
+
+
+            <div class="form-group">
+                <label for="inputCoursePasco">
+                    Upload Pasco
+                </label>
+
+                <input type="file" name="Pasco" value="{{ old('Pasco') }}" id="Pasco" class="form-control-file">
+            </div>
+
+            <button class="btn btn-primary" type="submit">Add Course</button>  
+
+            <a href="" class="btn btn-success" onclick="formSwitcher('existing')">New Course</a>
+
+
+
+        </form>
+    </div>
+
+  
 @endsection
 
 @section('extra_js')
     <script>
-        function fieldSwitcher(id)
+        function formSwitcher(var id)
         {
             switch(id)
             {
-                case "t_course":
+                case "non_existing":
+                  
                     document.getElementById(id).style = display:none;
+                    document.getElementById('existing').style = display:block;
+                    
+                break;
+
+                case "existing": 
+            
+                    document.getElementById(id).style = display:none;
+                    document.getElementById('non_existing').style = display:block;
+                
+                break;
+
             }
         }
 

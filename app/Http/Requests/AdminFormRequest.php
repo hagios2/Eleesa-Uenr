@@ -23,15 +23,25 @@ class AdminFormRequest extends Request
      */
     public function rules()
     {
-        return [
-            //
-            'program' => 'required',
-            'semester' => 'required',
-            'course' => ['required', 'string'],
-            'course_code' => ['required', 'string'],
-            'Book' => ['mimes:pdf'],
-            'Slide' => ['mimes:pdf'],
-            'Pasco' => ['mimes:pdf'],
-        ];
+        if(!request()->has('existing'))
+        {
+            return [
+                
+                'program' => 'required',
+                'semester' => 'required',
+                'course' => ['required', 'string'],
+                'course_code' => ['required', 'string'],
+                'Book' => ['mimes:pdf'],
+                'Slide' => ['mimes:pdf'],
+                'Pasco' => ['mimes:pdf'],
+
+            ];
+
+        }else {
+            return [
+
+                'course' => 'required',
+            ];
+        }
     }
 }

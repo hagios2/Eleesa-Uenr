@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::get('/history', 'PagesController@getHistory');
 
 Route::get('/download/constitution', 'MaterialsDownloadController@downloadConstitution');
 
-Route::get('/home', 'HomeController@index');
+Route::get('/{sem_id}/courses', 'CoursesController@redirectCoursesWithId');
 
 Route::resource('admin', 'AdminController');
 
@@ -34,3 +35,5 @@ Route::post('/courses', 'CoursesController@getCourse');
 Route::get('/{course}/materials', 'CoursesController@getCourseMaterials');
 
 Route::get('material/{id}/{type}/download', 'MaterialsDownloadController@downloadMaterial');
+
+Route::get('/course', 'SearchController@searchCourse');

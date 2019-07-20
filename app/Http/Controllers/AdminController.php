@@ -34,7 +34,9 @@ class AdminController extends Controller
 
         $programs = Programs::all();
 
-        return view('pages.admin.create', \compact(['programs', 'semesters']));
+        $courses = Courses::all();
+
+        return view('pages.admin.create', \compact(['programs', 'semesters', 'courses']));
     }
 
     /**
@@ -45,19 +47,25 @@ class AdminController extends Controller
      */
     public function store(AdminFormRequest $request)
     {
-        if($request->has('combined')){
-            $course_id = Courses::create([
-                'sem_id' => $request->semester,
-                'combined' => $request->combined,
-                'course_code' => $request->course_code,
-                'course' => $request->course
-            ])->id;      
-        }else{
-            $course_id = Courses::create([
-                'sem_id' => $request->semester,
-                'course_code' => $request->course_code,
-                'course' => $request->course
-            ])->id;
+       if(!$request->has('existing'))
+        {
+            if($request->has('combined')){
+                $course_id = Courses::create([
+                    'sem_id' => $request->semester,
+                    'combined' => $request->combined,
+                    'course_code' => $request->course_code,
+                    'course' => $request->course
+                ])->id;      
+            }else{
+                $course_id = Courses::create([
+                    'sem_id' => $request->semester,
+                    'course_code' => $request->course_code,
+                    'course' => $request->course
+                ])->id;
+            }
+
+        }else {
+            $course_id = $request->course;
         }
     
         if($request->hasFile('Book'))
@@ -75,12 +83,13 @@ class AdminController extends Controller
             $pasco = $this->fileSaver('Pasco', $course_id);
         }
 
+        //persist materials or null
         Materials::create([
           
             'course_id' => $course_id,
-            'book' => $book,
-            'slide' => $slide,
-            'pasco' => $pasco,
+            'book' => $book ?? null,
+            'slide' => $slide ?? null,
+            'pasco' => $pasco ?? null,
         ]);
 
         return redirect('/admin/create')->withSuccess('Course was successfully added');
