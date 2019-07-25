@@ -4,6 +4,8 @@
 
     @include('includes.tab')
 
+    @include('includes.tab')
+
     <div class="well">
        
         <h3 class="title">Cant find Course?</h3>

@@ -91,7 +91,7 @@ class MaterialsDownloadController extends Controller
          //headers
          $headers = array(
         
-            'Content-Type: appliback();cation/pdf',
+            'Content-Type: application/pdf',
             
         );
 

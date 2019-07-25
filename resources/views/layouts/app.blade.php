@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximimum-scalable=1, user-scalable=no">
 
     <title>@yield('title', 'ELEESA-UENR')</title>
 
@@ -29,7 +29,18 @@
         .fa-btn {
             margin-right: 6px;
         }
+
+        .tabcontent{
+             
+            animation: fadeEffect 1s;
+        }
+
+        @keyframes fadeEffect{
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
     </style>
+
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
@@ -54,11 +65,12 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                    {{--  <li><a href="{{ url('/home') }}">Home</a></li> --}}
+                   <li>WE TR<span class="glyphicon glyphicon-flash"></span>NSFORM THE WORLD</li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                        <li>WE TR<span class="glyphicon glyphicon-flash"></span>NSFORM THE WORLD</li>
+                        
                    {{--  <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>

@@ -5,7 +5,8 @@
 @section('content')
         
     @include('errors.errors')
-    <div class="row">
+    
+    <div class="tab">
 
         {{-- <div class="col-3">
             <ul class="nav nav-pills nav-stacked">
@@ -16,7 +17,7 @@
             </ul>
         </div>
 --}}
-        <div class="col-5">
+        <div class="tabcontent" id="create">
 
             <h1> Add a course details</h1>
 
@@ -101,18 +102,19 @@
                 <button class="btn btn-primary" type="submit">Add Course</button>
 
 
-            <a href="" class="btn btn-success" onclick="formSwitcher('non_existing')">Add Materials</a>
+                <button class="tablinks" onclick="opencourse(event, 'existing')">Existing Course</button>
 
             </form>
 
         </div>
-    </div>
+
+    
 
     {{-- Existing Courses --}}
 
-    <div id="existing" style="display:none;">
+    <div id="existing" class="tabcontent">
         
-        <form action="" method="post">
+        <form action="/admin" method="post">
             {{ csrf_field() }}
 
             <div>
@@ -165,40 +167,17 @@
 
             <button class="btn btn-primary" type="submit">Add Course</button>  
 
-            <a href="" class="btn btn-success" onclick="formSwitcher('existing')">New Course</a>
-
-
+            <button id="defaultOpen" class="tablinks" onclick="opencourse(event, 'create')">New Course</button>
 
         </form>
+
     </div>
 
-  
+</div>
+
 @endsection
 
-@section('extra_js')
     <script>
-        function formSwitcher(var id)
-        {
-            switch(id)
-            {
-                case "non_existing":
-                  
-                    document.getElementById(id).style = display:none;
-                    document.getElementById('existing').style = display:block;
-                    
-                break;
-
-                case "existing": 
-            
-                    document.getElementById(id).style = display:none;
-                    document.getElementById('non_existing').style = display:block;
-                
-                break;
-
-            }
-        }
-
-        
+      
     </script>
 
-@endsection
