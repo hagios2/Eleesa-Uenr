@@ -18,7 +18,7 @@ class MaterialsDownloadController extends Controller
         /**
          * materialtypes => Book, Slide, Pasco
          * 
-         * convert materialtype t0 lowercase 
+         * convert materialtype to lowercase 
          * 
          * to get specified column from the model instancw
          * 
@@ -63,7 +63,7 @@ class MaterialsDownloadController extends Controller
         //file path
         if($course->combined)
         {
-            $path = 'storage/Combined/'.$level.'/'.$materialType.'/'.$id.'/'.$filename;
+            $path = 'storage/Combined/'.$level.'/'.$materialType.'/'.$course->id.'/'.$filename;
 
         }else{
             $path = 'storage/'.$program.'/'.$level.'/'.$materialType.'/'.$course->id.'/'.$filename;

@@ -30,6 +30,8 @@ Route::get('/{sem_id}/courses', 'CoursesController@redirectCoursesWithId');
 
 Route::resource('admin', 'AdminController');
 
+Route::get('/existing', 'AdminController@getexisting');
+
 Route::post('/courses', 'CoursesController@getCourse');
 
 Route::get('/{course}/materials', 'CoursesController@getCourseMaterials');

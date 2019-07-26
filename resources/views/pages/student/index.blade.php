@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label for="Program">Program</label>
         
-                <select class="form-control" name="program" id="program">
+                <select class="form-control" name="program" id="program" style="width:60%">
                     <option value="">Select Program</option>
                     <option {{ (old('program') == 1) ? 'selected' : '' }} value="1">Computer Engeering</option>
                     <option {{ (old('program') == 2) ? 'selected' : '' }} value="2">Electrical Engineering</option>
@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label for="Semester">Semester</label>
         
-                <select class="form-control" name="semester" id="semester">
+                <select class="form-control" name="semester" id="semester" style="width:60%">
                     <option value="">Select Semester</option>
                     <option {{ (old('semester') == 1) ? 'selected' : '' }} value="First Semester">First Semester</option>
                     <option {{ (old('semester') == 2) ? 'selected' : '' }} value="Second Semester">Second Semester</option>
@@ -39,7 +39,7 @@
             <div class="form-group">
                 <label for="Level">Level</label>
         
-                <select  class="form-control" name="level" id="program">
+                <select  class="form-control" name="level" id="program" style="width:60%">
                     <option value="">Select Level</option>
                     <option {{ (old('level') == 1) ? 'selected' : '' }} value="1">Level 100</option>
                     <option {{ (old('level') == 2) ? 'selected' : '' }} value="2">Level 200</option>

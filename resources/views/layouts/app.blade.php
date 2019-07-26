@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
     <!-- Title logo -->
-    <link rel="icon" type="image/jpg" href="{{ asset('storage/images/eleesa_logo.jpg') }}">
+    <link rel="icon" type="image/jpg" href="{{ asset('storage/images/logo.jpg') }}">
     
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -65,12 +65,12 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                    {{--  <li><a href="{{ url('/home') }}">Home</a></li> --}}
-                   <li>WE TR<span class="glyphicon glyphicon-flash"></span>NSFORM THE WORLD</li>
+                 
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                        
+                        <li>WE TR<span style="color:yellow" class="glyphicon glyphicon-flash"></span>NSFORM THE WORLD</li>
                    {{--  <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>

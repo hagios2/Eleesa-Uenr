@@ -1,11 +1,19 @@
 @if ($errors->any())
+   
     <div class="alert alert-danger">
+        
         <ul>
+        
             @foreach ($errors->all() as $error)
+        
                 <li>{{ $error }}</li>
+            
             @endforeach
+        
         </ul>
+    
     </div>
+    
 @endif
 
 
@@ -26,14 +34,14 @@
        <span class="glyphicon glyphicon-info-sign"></span> {{session('info')}}
 
     </div>
-    name
+    
 @endif
 
 @if(session('error'))
 
     <div class="alert alert-danger">
 
-        {{session('error')}}
+            <span class="glyphicon glyphicon-info-sign"></span> {{session('error')}}
 
     </div>
 

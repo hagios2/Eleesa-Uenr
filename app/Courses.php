@@ -10,7 +10,7 @@ class Courses extends Model
 
     public function semester()
     {
-        return $this->belongsTo(Semester::class);
+        return $this->belongsTo(Semesters::class, 'sem_id');
     }
 
     public function material()

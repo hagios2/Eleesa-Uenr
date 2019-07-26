@@ -50,7 +50,11 @@ class CoursesController extends Controller
     public function getCourseMaterials($id)
     {
 
-        $materials = Courses::find($id)->material;
+        $course = Courses::find($id);
+
+        $course_name = $course->course;
+        
+        $materials = $course->material;
 
         static $book = 0;
         static $slide = 0;
@@ -75,6 +79,6 @@ class CoursesController extends Controller
 
         }
 
-       return view('pages.student.c_materials', \compact(['materials' , 'book', 'slide', 'pasco']));
+       return view('pages.student.c_materials', \compact(['materials' , 'book', 'slide', 'pasco', 'course_name']));
     } 
 }

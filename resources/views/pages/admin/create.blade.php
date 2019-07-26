@@ -4,6 +4,8 @@
 
 @section('content')
         
+    @include('includes.tab')
+    
     @include('errors.errors')
     
     <div class="tab">
@@ -17,7 +19,7 @@
             </ul>
         </div>
 --}}
-        <div class="tabcontent" id="create">
+        <div>
 
             <h1> Add a course details</h1>
 
@@ -28,7 +30,7 @@
             <div class="form-group" id="non_existing">
                     <label for="InputCourse">Program</label>
             
-                    <select required name="program" id="program" class="form-control">
+                    <select required name="program" id="program" class="form-control" style="width:60%">
                         <option value="#">Select a Program</option>
 
                         @foreach ($programs as $prog)
@@ -49,7 +51,7 @@
                 <div class="form-group">
                     <label for="InputCourse">Semester</label>
                     
-                    <select  required name="semester" id="semester" class="form-control">
+                    <select  required name="semester" id="semester" class="form-control" style="width:60%">
                         <option value="#">Select Semester</option>
                             
                         @foreach ($semesters as $semester)
@@ -59,19 +61,32 @@
                         
                 </div>
 
-                <div class="form-group" id="course_code">
-                    <label for="Course_code">Course</label>
+                <div class="alert alert-info" style="width:60%">
 
-                    <input class="form-control" type="text" name="course_code" placeholder="Enter course code" value="{{ old('course_code') }}">
+                        <h4><span class="glyphicon glyphicon-info-sign"></span> Click on Existing Course to add materials to existing courses</h4>
 
                 </div>
 
+
+                <div class="form-group" id="course_code">
+
+                    <label for="Course_code">Course Code</label>
+        
+                    <input class="form-control" type="text" name="course_code" placeholder="Enter course code" value="{{ old('course_code') }}" style="width:60%">
+        
+                </div>
+
+
+               
                 <div class="form-group" id="t_course">
                     <label for="InputCourse">Course</label>
 
-                    <input class="form-control" type="text" name="course" placeholder="Enter course name" value="{{ old('course') }}">
+                    <input class="form-control" type="text" name="course" placeholder="Enter course name" value="{{ old('course') }}" style="width:60%">
 
                 </div>
+
+
+            <h4 class="title">Add Course Materials</h4>
 
                 <div class="form-group">
                         <label for="inputCourseBook">
@@ -102,82 +117,14 @@
                 <button class="btn btn-primary" type="submit">Add Course</button>
 
 
-                <button class="tablinks" onclick="opencourse(event, 'existing')">Existing Course</button>
+                <a href="/existing" class="btn btn-default">Existing Course</a>
 
             </form>
 
         </div>
 
-    
-
-    {{-- Existing Courses --}}
-
-    <div id="existing" class="tabcontent">
-        
-        <form action="/admin" method="post">
-            {{ csrf_field() }}
-
-            <div>
-
-                <input type="hidden" name="existing" value="1">
-            
-            </div>
-            
-            <div class="form-group">
-                <label for="InputCourse">Courses</label>
-                
-                <select  required name="course" id="course" class="form-control">
-                    <option value="#">Select Course</option>
-                        
-                    @foreach ($courses as $existingCourse)
-                        <option {{ (old('course') == $existingCourse->id) ? 'selected' : '' }} value="{{ $existingCourse->id }}">{{ $existingCourse->course }}</option>
-                    @endforeach
-                </select>
-                    
-            </div>
-
-            <h3 class="title">Add Course Materials</h3>
-
-
-            <div class="form-group">
-                    <label for="inputCourseBook">
-                        Upload Book
-                    </label>
-
-                    <input type="file" name="Book" id="Book" class="form-control-file" value="{{ old('Book') }}">
-            </div>
-            
-
-            <div class="form-group">
-                    <label for="inputCourseSlide">
-                        Upload Slide
-                    </label>
-
-                    <input type="file" name="Slide" value="{{ old('Slide') }}" id="Slide" class="form-control-file">
-                </div>
-
-
-            <div class="form-group">
-                <label for="inputCoursePasco">
-                    Upload Pasco
-                </label>
-
-                <input type="file" name="Pasco" value="{{ old('Pasco') }}" id="Pasco" class="form-control-file">
-            </div>
-
-            <button class="btn btn-primary" type="submit">Add Course</button>  
-
-            <button id="defaultOpen" class="tablinks" onclick="opencourse(event, 'create')">New Course</button>
-
-        </form>
-
     </div>
-
-</div>
 
 @endsection
 
-    <script>
-      
-    </script>
 

@@ -4,7 +4,7 @@
 
     @include('includes.tab')
 
-    @include('includes.tab')
+    @include('errors.errors')
 
     <div class="well">
        
@@ -14,9 +14,9 @@
 
             <div class="row">
 
-                <div class="input-group" style="width:40%;">
+                <div class="input-group" style="width:60%;">
         
-                    <input type="text" class="form-control" name="search" id="search" placeholder="Enter Course or Course code" value="{{ old('search') }}">
+                    <input type="text" class="form-control" name="search" id="search" placeholder="Enter Course" value="{{ old('search') }}">
     
                     <span class="input-group-btn">
     

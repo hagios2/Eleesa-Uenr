@@ -18,7 +18,18 @@ class SearchController extends Controller
 
         $course_id = Courses::where('course', 'like', $search_value.'%')->value('id');
 
-        return redirect('/'.$course_id.'/materials');
+        if($course_id)
+        {
+
+            return redirect('/'.$course_id.'/materials');
+        
+        }else{
+
+            return back()->withError('Enter a valid course');
+            
+        }
+
+       
         
     }
 }

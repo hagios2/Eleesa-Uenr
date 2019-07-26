@@ -5,141 +5,188 @@
     @include('includes.tab')
 
     @include('errors.errors')
-
-    @foreach ($materials as $m_course)
+       
+        
+    @if ($materials->count() > 0)
 
         <div class="well">
 
-            <h2 class="title">Course Materials for {{ $m_course->course->course }}</h2>
+            <h2 class="title">Materials for {{ $course_name }}</h2>
         
         </div>
-       
-        
-        @if ($materials->count() > 0)
 
-         {{-- books --}}
+        {{-- books --}}
 
-         <div>
+        <div>
 
-                @if ($book > 0)
-                    
-                    <h1 class="title"><span class="glyphicon glyphicon-book"></span> {{ $book }} Book(s) Available</h1>
-        
-                @endif    
-        
+            @if ($book > 0)
+
                 <div>
-        
-                    <table class="table table-striped">
-        
-                        @forelse ($materials as $material)
-            
-                            <tr>
-                        
-                                <td>
-            
-                                    <a href="/material/{{ $material->id }}/{{'Book'}}/download"> {{ $material->book}} </a>
-                                
-                                </td>
-                                
-                            </tr>
-                                            
-                        @empty
-                                    
-                            <h1 class="title">No Book Available</h1>
-            
-                        @endforelse        
-                
-                    </table>
-        
+
+                    <h3 class="title"><span class="glyphicon glyphicon-book"></span> {{ $book }} Book(s) Available</h3>
+
                 </div>
-        
-            </div><br>
-    
-            {{-- slides --}}
-    
-            <div>
-    
-                @if ($slide > 0)
-                        
-                    <h1 class="title"><span class="glyphicon glyphicon-book"></span> {{ $slide}} Slide(s) Available</h1>
-    
-                @endif    
-    
+
                 <div>
-    
+
                     <table class="table table-striped">
     
-                        @forelse ($materials as $slides)
+                        @foreach ($materials as $books)
+
+                                {{--  remove redundant rows if book row is empty  --}}
     
-                            <tr>
-                        
-                                <td>
-    
-                                    <a href="/material/{{ $slides->id }}/{{'Slide'}}/download"> {{ $slides->slide}} </a>
-                                
-                                </td>
-                                
-                            </tr>
-                                            
-                        @empty
-                                    
-                            <h1 class="title">No Slide Available</h1>
-    
-                        @endforelse        
-                
-                    </table>
-    
-                </div>
-    
-            </div><br>
-    
-    
-             {{-- Pasco --}}
-    
-            <div>
-    
-                @if ($pasco > 0)
+                            @if($books->book != null)
                             
-                    <h1 class="title"><span class="glyphicon glyphicon-file"></span> {{ $pasco }} Pasco Available</h1>
-        
-                @endif    
-        
-                <div>
-        
-                    <table class="table">
-    
-                        @forelse ($materials as $pasco)
-    
-                            <tr>
+                                <tr>
                         
-                                <td>
+                                    <td>
     
-                                    <a href="/material/{{ $pasco->id }}/{{'Pasco'}}/download"> {{ $pasco->pasco}} </a>
+                                        <a href="/material/{{ $books->id }}/{{'Book'}}/download"> {{ $books->book}} </a>
                                 
-                                </td>
+                                    </td>
                                 
-                            </tr>
-                                            
-                        @empty
-                                    
-                            <h1 class="title">No Pasco Available</h1>
+                                </tr>
+
+                            @endif
     
-                        @endforelse        
+                        @endforeach        
                 
                     </table>
     
                 </div>
-        
-            </div>
-        
-        @else
             
-            <h1 class="title">No Material(s) Available</h1>
-    
-        @endif
-        
-    @endforeach
+            @else 
+             
+                <div>
 
-      
+                    <h3 class="title">No Book Available</h3>
+
+                </div>
+    
+            @endif    
+    
+           
+    
+        </div><br>
+
+        {{-- slides --}}
+
+        <div>
+
+            @if ($slide > 0)
+                    
+                <div>
+                    
+                    <h3 class="title"><span class="glyphicon glyphicon-book"></span> {{ $slide}} Slide(s) Available</h3>
+
+                </div>
+
+                <div>
+
+                    <table class="table table-striped">
+    
+                        @foreach ($materials as $slides)
+
+                        {{--  remove redundant rows if slide row is empty  --}}
+    
+                            @if($slides->slide != null)
+                               
+                                <tr>
+                        
+                                    <td>
+    
+                                        <a href="/material/{{ $slides->id }}/{{'Slide'}}/download"> {{ $slides->slide}} </a>
+                                
+                                    </td>
+                                
+                                </tr>
+                                
+                            @endif
+
+                        @endforeach    
+                
+                    </table>
+    
+                </div>
+
+            @else
+
+                <div>
+
+                    <h3 class="title">No Slide Available</h3>
+
+                </div>
+
+            @endif    
+
+           
+
+        </div><br>
+
+
+            {{-- Pasco --}}
+
+        <div>
+
+            @if ($pasco > 0)
+                                    
+                                
+                <div>
+
+                    <h3 class="title"><span class="glyphicon glyphicon-file"></span> {{ $pasco }} Pasco Available</h3>
+
+                </div>
+
+
+                <div>
+    
+                    <table class="table table-striped">
+    
+                        @foreach ($materials as $material)
+
+                            {{--  remove redundant rows if Pasco row is empty  --}}
+    
+                            @if($material->pasco != null)
+
+                                <tr>
+                        
+                                    <td>
+                                        
+                                        <a href="/material/{{ $material->id }}/{{'Pasco'}}/download"> {{ $material->pasco}} </a>
+                                
+                                    </td>
+                                
+                                </tr>
+                                
+                            @endif
+                            
+                        @endforeach        
+                
+                    </table>
+    
+                </div>
+
+            @else
+
+                <div>
+
+                    <h3 class="title">No Pasco Available</h3> 
+
+                </div>
+        
+    
+            @endif    
+    
+        </div>
+    
+    @else
+        
+        <h1 class="title">No Material(s) Available</h1>
+
+    @endif
+    
+
+
+    
 
 @endsection

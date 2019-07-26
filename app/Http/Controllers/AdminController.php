@@ -34,9 +34,9 @@ class AdminController extends Controller
 
         $programs = Programs::all();
 
-        $courses = Courses::all();
+       
 
-        return view('pages.admin.create', \compact(['programs', 'semesters', 'courses']));
+        return view('pages.admin.create', \compact(['programs', 'semesters']));
     }
 
     /**
@@ -47,8 +47,13 @@ class AdminController extends Controller
      */
     public function store(AdminFormRequest $request)
     {
-       if(!$request->has('existing'))
+
+       if($request->has('existing'))
         {
+            $course_id = $request->course;
+
+        }else {
+
             if($request->has('combined')){
                 $course_id = Courses::create([
                     'sem_id' => $request->semester,
@@ -63,9 +68,6 @@ class AdminController extends Controller
                     'course' => $request->course
                 ])->id;
             }
-
-        }else {
-            $course_id = $request->course;
         }
     
         if($request->hasFile('Book'))
@@ -75,12 +77,12 @@ class AdminController extends Controller
 
         if($request->hasFile('Slide'))
         {
-            $slide = $this->fileSaver('Slide', $course_id);
+           $slide = $this->fileSaver('Slide', $course_id);
         }
 
         if($request->hasFile('Pasco'))
         {
-            $pasco = $this->fileSaver('Pasco', $course_id);
+           $pasco = $this->fileSaver('Pasco', $course_id);
         }
 
         //persist materials or null
@@ -92,7 +94,7 @@ class AdminController extends Controller
             'pasco' => $pasco ?? null,
         ]);
 
-        return redirect('/admin/create')->withSuccess('Course was successfully added');
+        return back()->withSuccess('Course was successfully added');
     }
 
     /**
@@ -142,22 +144,35 @@ class AdminController extends Controller
 
     public function fileSaver($file, $id)
     {
+
         //get file name
         $fileNameToStore = request()->file($file)->getClientOriginalName();
 
-        //get level for course 
-        $course_level = Semesters::find(request()->semester)->level;
+        //get course
+        $course = Courses::find($id);
+
+        $semester = Semesters::find($course->sem_id);
 
         //path to store file
-        if(request()->has('combined')){
+        if($course->combined){
 
-            request()->file($file)->move('storage/Combined/'.$course_level->level.'/'.$file.'/'.$id.'/', $fileNameToStore);
+            request()->file($file)->move('storage/Combined/'.$semester->level->level.'/'.$file.'/'.$id.'/', $fileNameToStore);
         
         }else{
             
-            request()->file($file)->move('storage/'.request()->program.'/'.$course_level->level.'/'.$file.'/'.$id.'/', $fileNameToStore);
+            request()->file($file)->move('storage/'.$semester->program->program.'/'.$semester->level->level.'/'.$file.'/'.$id.'/', $fileNameToStore);
         }
         
         return $fileNameToStore;
+    }
+
+
+    public function getexisting()
+    {
+
+        $courses = Courses::all();
+
+
+        return view('pages.admin.exist', compact('courses'));
     }
 }
