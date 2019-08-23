@@ -70,7 +70,7 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                        <li>WE TR<span style="color:yellow" class="glyphicon glyphicon-flash"></span>NSFORM THE WORLD</li>
+                        <li><strong>WE TR<span style="color:gold;font-size:2rem;" class="glyphicon glyphicon-flash"></span>NSFORM THE WORLD</strong></li>
                    {{--  <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>

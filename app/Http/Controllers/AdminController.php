@@ -10,6 +10,7 @@ use App\Materials;
 use App\Programs;
 use App\Http\Requests\AdminFormRequest;
 use App\Courses;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -47,6 +48,13 @@ class AdminController extends Controller
      */
     public function store(AdminFormRequest $request)
     {
+       $course_exists = Courses::where('course_code', $request->course_code)
+            ->orWhere('course', $request->course)->first();
+
+        if($course_exists)
+        {
+            return back()->with('info', 'Course already exists click on the existing course to add course materials');
+        }
 
        if($request->has('existing'))
         {
@@ -155,12 +163,15 @@ class AdminController extends Controller
 
         //path to store file
         if($course->combined){
-
-            request()->file($file)->move('storage/Combined/'.$semester->level->level.'/'.$file.'/'.$id.'/', $fileNameToStore);
+            
+            request()->file($file)->move(storage_path('app/public/Combined/'.$semester->level->level.'/'.$file.'/'.$id.'/'), $fileNameToStore);
+            
         
         }else{
-            
-            request()->file($file)->move('storage/'.$semester->program->program.'/'.$semester->level->level.'/'.$file.'/'.$id.'/', $fileNameToStore);
+        
+       
+          request()->file($file)->move(storage_path('app/public/'.$semester->program->program.'/'.$semester->level->level.'/'.$file.'/'.$id.'/'), $fileNameToStore);
+
         }
         
         return $fileNameToStore;
