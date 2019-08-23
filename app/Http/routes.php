@@ -12,14 +12,14 @@ use App\Http\Controllers\SearchController;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
    
     return view(base_path('eleesa_uenr/dist/index'));
-});
+}); */
 
 Route::auth();
 
-/* Route::get('/', 'PagesController@index'); */
+Route::get('/', 'PagesController@index');
 
 Route::get('/news', 'PagesController@getNews');
 
