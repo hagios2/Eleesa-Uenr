@@ -12,7 +12,7 @@
 
     <div>
 
-            <h2 class="title">Add materials to existing course</h2>
+            <h2 class="title" style="margin-left:15%">Add materials to existing course</h2>
         
         <form action="/admin" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -39,7 +39,7 @@
 
             <div class="alert alert-info" style="width:60%">
 
-                    <h4><span class="glyphicon glyphicon-info-sign"></span> Click on New Course to add new courses</h4>
+                    <h5><span class="glyphicon glyphicon-info-sign"></span> Click on New Course to add new courses</h5>
 
             </div>
 

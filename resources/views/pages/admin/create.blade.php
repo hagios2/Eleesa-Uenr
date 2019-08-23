@@ -8,7 +8,7 @@
     
     @include('errors.errors')
     
-    <div class="tab">
+    <div>
 
         {{-- <div class="col-3">
             <ul class="nav nav-pills nav-stacked">
@@ -21,7 +21,7 @@
 --}}
         <div>
 
-            <h1> Add a course details</h1>
+            <h3 style="margin-left:15%"> Add a course details</h3>
 
             <form action="/admin" method="POST" enctype="multipart/form-data">
                 
@@ -30,7 +30,7 @@
             <div class="form-group" id="non_existing">
                     <label for="InputCourse">Program</label>
             
-                    <select required name="program" id="program" class="form-control" style="width:60%">
+                    <select required name="program" id="program" class="form-control" style="width:70%">
                         <option value="#">Select a Program</option>
 
                         @foreach ($programs as $prog)
@@ -51,7 +51,7 @@
                 <div class="form-group">
                     <label for="InputCourse">Semester</label>
                     
-                    <select  required name="semester" id="semester" class="form-control" style="width:60%">
+                    <select  required name="semester" id="semester" class="form-control" style="width:70%">
                         <option value="#">Select Semester</option>
                             
                         @foreach ($semesters as $semester)
@@ -61,9 +61,9 @@
                         
                 </div>
 
-                <div class="alert alert-info" style="width:60%">
+                <div class="alert alert-info" style="width:70%">
 
-                        <h4><span class="glyphicon glyphicon-info-sign"></span> Click on Existing Course to add materials to existing courses</h4>
+                        <h5><span class="glyphicon glyphicon-info-sign"></span> Click on Existing Course to add materials to existing courses</h5>
 
                 </div>
 
@@ -72,7 +72,7 @@
 
                     <label for="Course_code">Course Code</label>
         
-                    <input class="form-control" type="text" name="course_code" placeholder="Enter course code" value="{{ old('course_code') }}" style="width:60%">
+                    <input class="form-control" type="text" name="course_code" placeholder="Enter course code" value="{{ old('course_code') }}" style="width:70%">
         
                 </div>
 
@@ -81,7 +81,7 @@
                 <div class="form-group" id="t_course">
                     <label for="InputCourse">Course</label>
 
-                    <input class="form-control" type="text" name="course" placeholder="Enter course name" value="{{ old('course') }}" style="width:60%">
+                    <input class="form-control" type="text" name="course" placeholder="Enter course name" value="{{ old('course') }}" style="width:70%">
 
                 </div>
 

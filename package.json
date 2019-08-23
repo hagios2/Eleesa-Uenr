@@ -2,8 +2,8 @@
   "private": true,
   "scripts": {
     "prod": "gulp --production",
-    "dev": "gulp watch",
-    "start": "php artisan serve"
+    "dev": "gulp watch"
+    
   },
   "devDependencies": {
     "gulp": "^3.9.1",

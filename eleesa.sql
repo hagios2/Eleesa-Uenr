@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 26, 2019 at 09:45 AM
+-- Generation Time: Aug 23, 2019 at 01:17 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
--- PHP Version: 7.2.19-0ubuntu0.18.04.1
+-- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -41,14 +41,25 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `sem_id`, `combined`, `course_code`, `course`, `created_at`, `updated_at`) VALUES
-(1, 2, NULL, 'ELNG 114', 'Intro to Electrical Machines', '2019-07-26 17:09:24', '2019-07-26 17:09:24'),
-(2, 5, 1, 'ELNG 303', 'Linear Electronic Circuits', '2019-07-26 17:12:03', '2019-07-26 17:12:03'),
-(3, 13, 1, 'ELNG 305', 'Classical Control Systems', '2019-07-26 17:13:35', '2019-07-26 17:13:35'),
-(4, 5, 1, 'ELNG 307', 'Analog and Digital Communication', '2019-07-26 17:16:12', '2019-07-26 17:16:12'),
-(5, 3, 1, 'CENG 205', 'Computer Programming for Engineers', '2019-07-26 17:26:00', '2019-07-26 17:26:00'),
-(6, 6, NULL, 'CENG 312', 'Database and Information Retrieval', '2019-07-26 17:27:21', '2019-07-26 17:27:21'),
-(7, 11, 1, 'CENG 201', 'Electrical Circuit Design', '2019-07-26 17:34:05', '2019-07-26 17:34:05'),
-(8, 5, 1, 'STAT 309', 'Probability and Statistics For Engineers', '2019-07-26 17:36:27', '2019-07-26 17:36:27');
+(1, 6, 1, 'ELNG 307', 'Analog and Digital Communication', '2019-08-23 16:48:46', '2019-08-23 16:48:46'),
+(2, 13, 1, 'ELNG 305', 'Classical Control Systems', '2019-08-23 16:51:20', '2019-08-23 16:51:20'),
+(3, 3, NULL, 'CENG 208', 'Data Structures and Algorithms', '2019-08-23 16:58:23', '2019-08-23 16:58:23'),
+(4, 4, 1, 'CENG 206', 'Digital Logical Design', '2019-08-23 17:03:13', '2019-08-23 17:03:13'),
+(5, 14, 1, 'ELNG 302', 'Digital Mobile Communication', '2019-08-23 17:05:00', '2019-08-23 17:05:00'),
+(7, 12, 1, 'ELNG 208', 'Electromagnetic Field Theory', '2019-08-23 17:14:13', '2019-08-23 17:14:13'),
+(8, 12, 1, 'ELNG 202', 'Electrical Measurement and Instrumentation', '2019-08-23 17:17:24', '2019-08-23 17:17:24'),
+(9, 4, 1, 'ELNG 222', 'Signal and Systems', '2019-08-23 17:19:52', '2019-08-23 17:19:52'),
+(10, 2, NULL, 'ELNG 108', 'Electrical Machines', '2019-08-23 17:32:19', '2019-08-23 17:32:19'),
+(11, 3, NULL, 'CENG 205', 'Computer Programming For Engineers', '2019-08-23 17:35:33', '2019-08-23 17:35:33'),
+(12, 5, NULL, 'CENG 312', 'Database and Information Retrieval', '2019-08-23 17:39:04', '2019-08-23 17:39:04'),
+(13, 11, 1, 'CENG 201', 'Electrical Circuit Design', '2019-08-23 17:40:42', '2019-08-23 17:40:42'),
+(14, 5, 1, 'CENG 303', 'Linear Electronic Circuits', '2019-08-23 18:06:48', '2019-08-23 18:06:48'),
+(15, 4, 1, 'ELNG 204', 'Introduction To Matlab', '2019-08-23 18:25:35', '2019-08-23 18:25:35'),
+(16, 6, NULL, 'CENG 301', 'Object Oriented Programming', '2019-08-23 18:38:13', '2019-08-23 18:38:13'),
+(17, 13, 1, 'STAT 309', 'Probability and Statistics For Engineers', '2019-08-23 20:20:58', '2019-08-23 20:20:58'),
+(18, 3, 1, 'CENG 207', 'Solid State Devices', '2019-08-23 20:28:02', '2019-08-23 20:28:02'),
+(19, 6, NULL, 'CENG 304', 'Operating Systems', '2019-08-23 20:46:01', '2019-08-23 20:46:01'),
+(20, 6, NULL, 'CENG 214', 'Software Engineering and Design', '2019-08-23 20:51:15', '2019-08-23 20:51:15');
 
 -- --------------------------------------------------------
 
@@ -68,10 +79,10 @@ CREATE TABLE `levels` (
 --
 
 INSERT INTO `levels` (`id`, `level`, `created_at`, `updated_at`) VALUES
-(1, 'Level 100', '2019-07-26 16:57:28', '2019-07-26 16:57:28'),
-(2, 'Level 200', '2019-07-26 16:57:28', '2019-07-26 16:57:28'),
-(3, 'Level 300', '2019-07-26 16:57:28', '2019-07-26 16:57:28'),
-(4, 'Level 400', '2019-07-26 16:57:28', '2019-07-26 16:57:28');
+(1, 'Level 100', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(2, 'Level 200', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(3, 'Level 300', '2019-08-23 16:42:14', '2019-08-23 16:42:14'),
+(4, 'Level 400', '2019-08-23 16:42:14', '2019-08-23 16:42:14');
 
 -- --------------------------------------------------------
 
@@ -94,23 +105,39 @@ CREATE TABLE `materials` (
 --
 
 INSERT INTO `materials` (`id`, `course_id`, `book`, `slide`, `pasco`, `created_at`, `updated_at`) VALUES
-(1, 1, NULL, NULL, 'Machines.pdf', '2019-07-26 17:09:24', '2019-07-26 17:09:24'),
-(2, 2, NULL, NULL, 'Linear Electronics.pdf', '2019-07-26 17:12:03', '2019-07-26 17:12:03'),
-(3, 2, NULL, NULL, 'Linear Electronics mid sem.pdf', '2019-07-26 17:12:23', '2019-07-26 17:12:23'),
-(4, 3, NULL, NULL, 'classical.pdf', '2019-07-26 17:13:36', '2019-07-26 17:13:36'),
-(5, 3, NULL, NULL, 'classical mid sem.pdf', '2019-07-26 17:13:52', '2019-07-26 17:13:52'),
-(6, 3, NULL, NULL, 'classical mid sem1.pdf', '2019-07-26 17:14:08', '2019-07-26 17:14:08'),
-(7, 3, NULL, NULL, 'classical quiz.pdf', '2019-07-26 17:14:21', '2019-07-26 17:14:21'),
-(8, 4, NULL, NULL, 'analog communication mid sem.pdf', '2019-07-26 17:16:12', '2019-07-26 17:16:12'),
-(9, 4, NULL, NULL, 'analog communication mid sem1.pdf', '2019-07-26 17:16:35', '2019-07-26 17:16:35'),
-(10, 4, NULL, NULL, 'analog communication quiz.pdf', '2019-07-26 17:16:49', '2019-07-26 17:16:49'),
-(11, 4, NULL, NULL, 'analog communication-min.pdf', '2019-07-26 17:20:39', '2019-07-26 17:20:39'),
-(12, 5, NULL, NULL, 'C prog.pdf', '2019-07-26 17:26:00', '2019-07-26 17:26:00'),
-(13, 5, NULL, NULL, 'C prog mid sem.pdf', '2019-07-26 17:26:13', '2019-07-26 17:26:13'),
-(15, 7, NULL, NULL, 'EE Design1.pdf', '2019-07-26 17:34:05', '2019-07-26 17:34:05'),
-(16, 7, NULL, NULL, 'Electrical Circuit Design.pdf', '2019-07-26 17:34:20', '2019-07-26 17:34:20'),
-(17, 8, NULL, NULL, 'prob.pdf', '2019-07-26 17:36:27', '2019-07-26 17:36:27'),
-(18, 8, NULL, NULL, 'prob1.pdf', '2019-07-26 17:36:43', '2019-07-26 17:36:43');
+(1, 1, NULL, NULL, 'analog communication quiz.pdf', '2019-08-23 16:48:46', '2019-08-23 16:48:46'),
+(2, 1, NULL, NULL, 'analog communication mid sem1.pdf', '2019-08-23 16:49:05', '2019-08-23 16:49:05'),
+(3, 1, NULL, NULL, 'analog communication mid sem.pdf', '2019-08-23 16:49:17', '2019-08-23 16:49:17'),
+(4, 2, NULL, NULL, 'classical quiz.pdf', '2019-08-23 16:51:21', '2019-08-23 16:51:21'),
+(5, 2, NULL, NULL, 'classical mid sem1.pdf', '2019-08-23 16:51:38', '2019-08-23 16:51:38'),
+(6, 2, NULL, NULL, 'classical mid sem.pdf', '2019-08-23 16:51:53', '2019-08-23 16:51:53'),
+(7, 3, NULL, NULL, 'Data structures.pdf', '2019-08-23 16:58:23', '2019-08-23 16:58:23'),
+(8, 3, NULL, NULL, 'Data structures1 .pdf', '2019-08-23 16:59:46', '2019-08-23 16:59:46'),
+(9, 4, NULL, NULL, 'Digital Logic Design.pdf', '2019-08-23 17:03:13', '2019-08-23 17:03:13'),
+(10, 5, NULL, NULL, 'Digital mobile communication.pdf', '2019-08-23 17:05:00', '2019-08-23 17:05:00'),
+(11, 7, NULL, NULL, 'EMFT2.pdf', '2019-08-23 17:14:13', '2019-08-23 17:14:13'),
+(12, 8, NULL, NULL, 'Instrumentation.pdf', '2019-08-23 17:17:24', '2019-08-23 17:17:24'),
+(13, 9, NULL, NULL, 'Signals and systems.pdf', '2019-08-23 17:19:52', '2019-08-23 17:19:52'),
+(14, 9, NULL, NULL, 'Signals 1.pdf', '2019-08-23 17:20:58', '2019-08-23 17:20:58'),
+(15, 9, NULL, NULL, 'Signals.pdf', '2019-08-23 17:21:12', '2019-08-23 17:21:12'),
+(16, 10, NULL, NULL, 'Machines.pdf', '2019-08-23 17:32:19', '2019-08-23 17:32:19'),
+(17, 10, NULL, NULL, 'Transformers.pdf', '2019-08-23 17:33:16', '2019-08-23 17:33:16'),
+(18, 11, NULL, NULL, 'C prog mid sem.pdf', '2019-08-23 17:35:34', '2019-08-23 17:35:34'),
+(20, 13, NULL, NULL, 'Electrical Circuit Design1.pdf', '2019-08-23 17:40:42', '2019-08-23 17:40:42'),
+(21, 13, NULL, NULL, 'Electrical Circuit Design.pdf', '2019-08-23 17:41:51', '2019-08-23 17:41:51'),
+(22, 14, NULL, NULL, 'Linear Electronics mid sem.pdf', '2019-08-23 18:06:48', '2019-08-23 18:06:48'),
+(23, 14, NULL, NULL, 'Linear Electronics.pdf', '2019-08-23 18:07:07', '2019-08-23 18:07:07'),
+(24, 15, NULL, NULL, 'Matlab quiz.pdf', '2019-08-23 18:25:35', '2019-08-23 18:25:35'),
+(25, 15, NULL, NULL, 'Matlab.pdf', '2019-08-23 18:33:00', '2019-08-23 18:33:00'),
+(26, 16, NULL, NULL, 'oop.pdf', '2019-08-23 18:38:13', '2019-08-23 18:38:13'),
+(27, 16, NULL, NULL, 'Object OP.pdf', '2019-08-23 18:38:32', '2019-08-23 18:38:32'),
+(28, 17, NULL, NULL, 'prob.pdf', '2019-08-23 20:20:58', '2019-08-23 20:20:58'),
+(30, 17, NULL, NULL, 'prob1.pdf', '2019-08-23 20:23:18', '2019-08-23 20:23:18'),
+(31, 18, NULL, NULL, 'Solid state quizes.pdf', '2019-08-23 20:28:02', '2019-08-23 20:28:02'),
+(33, 18, NULL, NULL, 'Solid state mid sem.pdf', '2019-08-23 20:31:57', '2019-08-23 20:31:57'),
+(34, 5, NULL, NULL, 'Digital mobile communication\'.pdf', '2019-08-23 20:44:06', '2019-08-23 20:44:06'),
+(35, 19, NULL, NULL, 'operating systems.pdf', '2019-08-23 20:46:01', '2019-08-23 20:46:01'),
+(36, 20, NULL, NULL, 'software engineering.pdf', '2019-08-23 20:51:15', '2019-08-23 20:51:15');
 
 -- --------------------------------------------------------
 
@@ -167,8 +194,8 @@ CREATE TABLE `programs` (
 --
 
 INSERT INTO `programs` (`id`, `program`, `created_at`, `updated_at`) VALUES
-(1, 'Computer Engineering', '2019-07-26 16:57:27', '2019-07-26 16:57:27'),
-(2, 'Electrical Engineering', '2019-07-26 16:57:27', '2019-07-26 16:57:27');
+(1, 'Computer Engineering', '2019-08-23 16:42:12', '2019-08-23 16:42:12'),
+(2, 'Electrical Engineering', '2019-08-23 16:42:12', '2019-08-23 16:42:12');
 
 -- --------------------------------------------------------
 
@@ -190,22 +217,22 @@ CREATE TABLE `semesters` (
 --
 
 INSERT INTO `semesters` (`id`, `prog_id`, `level_id`, `sem`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'CE 100 First Semester', '2019-07-26 16:57:27', '2019-07-26 16:57:27'),
-(2, 1, 1, 'CE 100 Second Semester', '2019-07-26 16:57:27', '2019-07-26 16:57:27'),
-(3, 1, 2, 'CE 200 First Semester', '2019-07-26 16:57:27', '2019-07-26 16:57:27'),
-(4, 1, 2, 'CE 200 Second Semester', '2019-07-26 16:57:27', '2019-07-26 16:57:27'),
-(5, 1, 3, 'CE 300 First Semester', '2019-07-26 16:57:27', '2019-07-26 16:57:27'),
-(6, 1, 3, 'CE 300 Second Semester', '2019-07-26 16:57:27', '2019-07-26 16:57:27'),
-(7, 1, 4, 'CE 400 First Semester', '2019-07-26 16:57:27', '2019-07-26 16:57:27'),
-(8, 1, 4, 'CE 400 Second Semester', '2019-07-26 16:57:27', '2019-07-26 16:57:27'),
-(9, 2, 1, 'EEE 100 First Semester', '2019-07-26 16:57:27', '2019-07-26 16:57:27'),
-(10, 2, 1, 'EEE 100 Second Semester', '2019-07-26 16:57:27', '2019-07-26 16:57:27'),
-(11, 2, 2, 'EEE 200 First Semester', '2019-07-26 16:57:27', '2019-07-26 16:57:27'),
-(12, 2, 2, 'EEE 200 Second Semester', '2019-07-26 16:57:28', '2019-07-26 16:57:28'),
-(13, 2, 3, 'EEE 300 First Semester', '2019-07-26 16:57:28', '2019-07-26 16:57:28'),
-(14, 2, 3, 'EEE 300 Second Semester', '2019-07-26 16:57:28', '2019-07-26 16:57:28'),
-(15, 2, 4, 'EEE 400 First Semester', '2019-07-26 16:57:28', '2019-07-26 16:57:28'),
-(16, 2, 4, 'EEE 400 Second Semester', '2019-07-26 16:57:28', '2019-07-26 16:57:28');
+(1, 1, 1, 'CE 100 First Semester', '2019-08-23 16:42:12', '2019-08-23 16:42:12'),
+(2, 1, 1, 'CE 100 Second Semester', '2019-08-23 16:42:12', '2019-08-23 16:42:12'),
+(3, 1, 2, 'CE 200 First Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(4, 1, 2, 'CE 200 Second Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(5, 1, 3, 'CE 300 First Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(6, 1, 3, 'CE 300 Second Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(7, 1, 4, 'CE 400 First Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(8, 1, 4, 'CE 400 Second Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(9, 2, 1, 'EEE 100 First Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(10, 2, 1, 'EEE 100 Second Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(11, 2, 2, 'EEE 200 First Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(12, 2, 2, 'EEE 200 Second Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(13, 2, 3, 'EEE 300 First Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(14, 2, 3, 'EEE 300 Second Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(15, 2, 4, 'EEE 400 First Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13'),
+(16, 2, 4, 'EEE 400 Second Semester', '2019-08-23 16:42:13', '2019-08-23 16:42:13');
 
 -- --------------------------------------------------------
 
@@ -308,7 +335,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `levels`
 --
@@ -318,7 +345,7 @@ ALTER TABLE `levels`
 -- AUTO_INCREMENT for table `materials`
 --
 ALTER TABLE `materials`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `programs`
 --
