@@ -23,4 +23,9 @@ class PagesController extends Controller
         return view('pages.student.history');
     } 
 
+    public function elections_zone()
+    {
+        return view('elections.election');
+    }
+
 }

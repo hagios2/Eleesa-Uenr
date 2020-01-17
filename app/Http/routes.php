@@ -44,9 +44,7 @@ Route::get('/course', 'SearchController@searchCourse');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
-/* 
-Route::get('/register', 'Auth\AuthController@register');
 
-Route::post('/register', 'Auth\AuthController@showRegistrationForm');
+Route::get('/voting-zone', 'PagesController@elections_zone')->middleware('auth');
 
-Route::get('/logout', 'Auth\AuthController@logout'); */
+Route::get('/election', 'ElectionController@index');
