@@ -8,28 +8,32 @@
 
     <div class="well">
        
-        <h3 class="title">Cant find Course?</h3>
+        <div style="margin-left:30%;">
 
-        <form action="/course" method="GET">
+            <h3 class="title">Cant find Course?</h3>
 
-            <div class="row">
+            <form action="/course" method="GET">
 
-                <div class="input-group" style="width:60%;">
-        
-                    <input type="text" class="form-control" name="search" id="search" placeholder="Enter Course" value="{{ old('search') }}">
-    
-                    <span class="input-group-btn">
-    
-                        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
-                    
-                    </span>
-        
-                </div>
-        
-            </div>
+                <div class="row">
+
+                    <div class="input-group" style="width:60%;">
             
-        </form>
+                        <input type="text" class="form-control" name="search" id="search" placeholder="Enter Course" value="{{ old('search') }}">
+        
+                        <span class="input-group-btn">
+        
+                            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+                        
+                        </span>
+            
+                    </div>
+            
+                </div>
+                
+            </form>
 
+        </div>
+        
     </div>
 
     <div>

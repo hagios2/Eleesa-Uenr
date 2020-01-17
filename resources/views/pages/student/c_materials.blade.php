@@ -71,7 +71,9 @@
 
         {{-- slides --}}
 
-        <div>
+        {{-- Slides has been removed to prevent issues with lecturers --}}
+
+        {{-- <div>
 
             @if ($slide > 0)
                     
@@ -89,7 +91,7 @@
 
                         {{--  remove redundant rows if slide row is empty  --}}
     
-                            @if($slides->slide != null)
+                         {{--    @if($slides->slide != null)
                                
                                 <tr>
                         
@@ -121,7 +123,7 @@
 
            
 
-        </div><br>
+        </div><br>  --}}
 
 
             {{-- Pasco --}}
@@ -184,9 +186,6 @@
         <h1 class="title">No Material(s) Available</h1>
 
     @endif
-    
-
-
     
 
 @endsection

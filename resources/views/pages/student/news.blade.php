@@ -19,38 +19,38 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
           <div class="item active">
-            <img src="{{ asset('storage/images/eleesa_logo.jpg') }}"
-             alt="...">
+            <img src="{{ asset('storage/images/trip/IMG_6290.jpg') }}"
+             alt="..." style="height: 500px;width: 100%" class="img-thumbnail">
             <div class="carousel-caption">
                 <h3>A Trip to Bui Dam</h3>
             </div>
           </div>
           
           <div class="item">
-            <img src="{{ asset('storage/images/header_image.jpg') }}" alt="...">
+            <img src="{{ asset('storage/images/trip/IMG_6274.jpg') }}" alt="..." style="height: 500px;width: 100%;" class="img-thumbnail">
             <div class="carousel-caption">
-                <h3>Caption Text</h3>
+                <h3>Eleesa Uenr</h3>
             </div>
           </div>
           
           <div class="item">
-            <img src="{{ asset('storage/images/image_10.jpg') }}" alt="...">
+            <img src="{{ asset('storage/images/trip/IMG_6690.jpg') }}" alt="..." style="height: 500px;width: 100%" class="img-thumbnail">
             <div class="carousel-caption">
-                <h3>Caption Text</h3>
+                <h3>Eleesa Executives</h3>
             </div>
           </div>
 
           <div class="item">
-                <img src="{{ asset('storage/images/tab1_image.jpg') }}" alt="...">
+                <img src="{{ asset('storage/images/trip/IMG_6704.jpg') }}" alt="..." style="height: 500px;width: 100%" class="img-thumbnail">
                 <div class="carousel-caption">
-                    <h3>Caption Text</h3>
+                    <h3>Fun at Bui</h3>
                 </div>
            </div>
 
            <div class="item">
-                <img src="{{ asset('storage/images/tab1_image.jpg') }}" alt="...">
+                <img src="{{ asset('storage/images/trip/IMG_6671.jpg') }}" alt="..." style="height: 500px;width: 100%" class="img-thumbnail">
                 <div class="carousel-caption">
-                    <h3>Caption Text</h3>
+                    <h3></h3>
                 </div>
            </div>
         
@@ -64,8 +64,87 @@
           <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
       </div> <!-- Carousel -->
-          
 
+      <div class="jumbotron bg-info" style="margin-top: 30px">
+          <div class="card">
+              <h2 class="card-title text-center lead pt-4 text-info">ELEESA SERMINAR</h2>
+      
+          </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div>
+              <a href="#">
+                <img src="{{ asset('storage/images/seminar/IMG_5874.jpg') }}" alt="Lights" style="width:100%" class="img-responsive img-circle">
+                <div class="caption">
+                  <p></p>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div>
+              <a href="#">
+                <img src="{{ asset('storage/images/seminar/IMG_5886.jpg') }}" alt="Nature" style="width:100%" class="img-responsive img-circle">
+                <div class="caption">
+                  <p></p>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div>
+              <a href="#">
+                <img src="{{ asset('storage/images/seminar/IMG_5939.jpg') }}" alt="Fjords" style="width:100%" class="img-responsive img-circle">
+                <div class="caption">
+                  <p></p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="jumbotron bg-info" style="margin-top: 30px">
+        <div class="card">
+            <h2 class="card-title text-center lead pt-4 text-info">ELEESA DINNER</h2>
+    
+        </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div>
+            <a href="#">
+              <img src="{{ asset('storage/images/Dinner/IMG_8984.jpg') }}" alt="Lights" style="width:100%;height: 250px" class="img-responsive img-circle">
+              <div class="caption">
+                <p></p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+            <a href="#">
+              <img src="{{ asset('storage/images/Dinner/_MG_7932.jpg') }}" alt="Nature" style="width:100%;height: 250px" class="img-responsive img-circle">
+              <div class="caption">
+                <p></p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+            <a href="#">
+              <img src="{{ asset('storage/images/Dinner/_MG_7805.jpg') }}" alt="Fjords" style="width:100%;height: 250px" class="img-responsive img-circle">
+              <div class="caption">
+                <p></p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+          
+{{--  
       <div class="card" style="margin-top:10px">
           <h2 class="card-title">ELEESA SERMINA</h2>
 
@@ -78,7 +157,7 @@
   
             <img width="50%" class="rounded-thumbnail" src="{{ asset('storage/images/image_10.jpg') }}" alt="image"> 
   
-       </div>
+       </div>  --}}
     
     
 @endsection

@@ -57,7 +57,7 @@ class CoursesController extends Controller
         $materials = $course->material;
 
         static $book = 0;
-        static $slide = 0;
+        // static $slide = 0;
         static $pasco = 0;
 
         foreach($materials as $material)
@@ -67,10 +67,10 @@ class CoursesController extends Controller
                 $book++;
             }
 
-            if($material->slide != null)
-            {
-                $slide++;
-            }
+            // if($material->slide != null)
+            // {
+            //     $slide++;
+            // }
 
             if($material->pasco != null)
             {
@@ -79,6 +79,6 @@ class CoursesController extends Controller
 
         }
 
-       return view('pages.student.c_materials', \compact(['materials' , 'book', 'slide', 'pasco', 'course_name']));
+       return view('pages.student.c_materials', \compact(['materials' , 'book', 'pasco', 'course_name']));
     } 
 }

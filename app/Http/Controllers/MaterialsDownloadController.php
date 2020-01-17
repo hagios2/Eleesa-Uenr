@@ -20,7 +20,7 @@ class MaterialsDownloadController extends Controller
          * 
          * convert materialtype to lowercase 
          * 
-         * to get specified column from the model instancw
+         * to get specified column from the model instance
          * 
          * find course for that material
          * 

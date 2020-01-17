@@ -12,14 +12,14 @@ use App\Http\Controllers\SearchController;
 |
 */
 
-/* Route::get('/', function () {
+Route::get('/', function () {
    
-    return view(base_path('eleesa_uenr/dist/index'));
-}); */
+    return view('welcome');
+}); 
 
-Route::auth();
 
-Route::get('/', 'PagesController@index');
+
+Route::get('/index', 'PagesController@index');
 
 Route::get('/news', 'PagesController@getNews');
 
@@ -40,3 +40,13 @@ Route::get('/{course}/materials', 'CoursesController@getCourseMaterials');
 Route::get('material/{id}/{type}/download', 'MaterialsDownloadController@downloadMaterial');
 
 Route::get('/course', 'SearchController@searchCourse');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+/* 
+Route::get('/register', 'Auth\AuthController@register');
+
+Route::post('/register', 'Auth\AuthController@showRegistrationForm');
+
+Route::get('/logout', 'Auth\AuthController@logout'); */

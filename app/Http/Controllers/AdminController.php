@@ -83,10 +83,10 @@ class AdminController extends Controller
            $book = $this->fileSaver('Book', $course_id);
         }
 
-        if($request->hasFile('Slide'))
+      /*   if($request->hasFile('Slide'))
         {
            $slide = $this->fileSaver('Slide', $course_id);
-        }
+        } */
 
         if($request->hasFile('Pasco'))
         {
@@ -98,58 +98,14 @@ class AdminController extends Controller
           
             'course_id' => $course_id,
             'book' => $book ?? null,
-            'slide' => $slide ?? null,
+            //'slide' => $slide ?? null,
             'pasco' => $pasco ?? null,
         ]);
 
         return back()->withSuccess('Course was successfully added');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
+    
     public function fileSaver($file, $id)
     {
 
