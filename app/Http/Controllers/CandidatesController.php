@@ -37,7 +37,7 @@ class CandidatesController extends Controller
 
     public function create()
     {
-        return view()
+        return view('candidate.create');
     }
 
 

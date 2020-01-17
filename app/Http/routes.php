@@ -45,6 +45,21 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/voting-zone', 'PagesController@elections_zone')->middleware('auth');
+/* 
+Route::get('/election', 'ElectionController@index');
+Route::get('/election', 'ElectionController@index');
 
 Route::get('/election', 'ElectionController@index');
+Route::get('/election', 'ElectionController@index'); */
+
+Route::get('/candidate', 'CandidatesContoller@index');
+
+Route::post('/candidate', 'CandidatesContoller@addCandidate');
+
+Route::get('/candidate/create', 'CandidatesContoller@create');
+
+Route::get('/candidate/{candidate}/edit', 'CandidatesController@edit');
+
+Route::patch('/candidate/{candidate}', 'CandidatesController@update');
+
+Route::delete('/candidate/{candidate}', 'CandidatesController@removeCandidate');
