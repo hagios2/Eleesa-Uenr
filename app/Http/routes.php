@@ -45,12 +45,12 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-/* 
-Route::get('/election', 'ElectionController@index');
-Route::get('/election', 'ElectionController@index');
+Route::get('/election', 'VotesController@index');
 
-Route::get('/election', 'ElectionController@index');
-Route::get('/election', 'ElectionController@index'); */
+Route::post('/election', 'VotesController@store');
+
+// Route::get('/election', 'ElectionController@index');
+/*Route::get('/election', 'ElectionController@index'); */
 
 Route::get('/candidate', 'CandidatesController@index');
 

@@ -23,12 +23,11 @@ class VotesController extends Controller
         if(auth()->user()->vote)
         {
 
-           $attributes = [$this->jay(), $this->africa(), $this->best()];
+            $attributes = Vote::all();
 
             return view('elections/election', compact('attributes'));
 
         }else{
-
 
              return view('elections/election');
         }

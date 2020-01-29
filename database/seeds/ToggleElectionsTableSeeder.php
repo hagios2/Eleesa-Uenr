@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\ToggleElection;
+use Illuminate\Database\Seeder;
 
-class ToogleElectionSeedersTable extends Seeder
+class ToggleElectionsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -13,6 +13,8 @@
                     <div class="panel-body">
                         Thank you for registering with us
                     </div>
+
+                    <a href="/election">Cast Vote</a>
                     
                 @else
 

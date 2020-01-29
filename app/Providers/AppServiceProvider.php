@@ -13,7 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+            
+        view()->composer('elections.election', function($view){
+
+            $view->with('toggleApp', \App\ToggleElection::find(1));
+        });
+    
     }
 
     /**
