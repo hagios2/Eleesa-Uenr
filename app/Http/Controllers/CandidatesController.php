@@ -21,14 +21,18 @@ class CandidatesController extends Controller
     {
         $candidates = Candidate::all();
 
-        return view('candidates.candidate');
+        return view('candidates.candidate', compact('candidates'));
     }
 
 
     public function addCandidate(CandidateFormRequest $request)
     {
 
-        $candidate = Candidate::create($request->all());
+        $candidate = $request->except('candidate_type');
+
+        $candidate[$request->candidate_type] = true;
+
+        $candidate = Candidate::create($candidate);
 
         $this->storeCandidateAvatar($candidate);
 
@@ -37,7 +41,7 @@ class CandidatesController extends Controller
 
     public function create()
     {
-        return view('candidate.create');
+        return view('candidates.create');
     }
 
 
@@ -62,14 +66,15 @@ class CandidatesController extends Controller
     public function storeCandidateAvatar(Candidate $candidate)
     {
          //get file name
-        $fileNameToStore = request()->file($file)->getClientOriginalName();
+        $fileNameToStore = request()->file('avatar')->getClientOriginalName();
 
          //path to store file
              
-        request()->file($file)->move(storage_path('app/public/images/'.$candidate->id.'/'), $fileNameToStore);
+        request()->file('avatar')->move(storage_path('app/public/images/candidates/'.$candidate->id.'/'), $fileNameToStore);
 
         $candidate->avatar = '/storage/images/'.$candidate->id.'/'.$fileNameToStore;
-             
+
+        $candidate->save();
         
     }
 

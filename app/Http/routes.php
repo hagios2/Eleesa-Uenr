@@ -52,11 +52,11 @@ Route::get('/election', 'ElectionController@index');
 Route::get('/election', 'ElectionController@index');
 Route::get('/election', 'ElectionController@index'); */
 
-Route::get('/candidate', 'CandidatesContoller@index');
+Route::get('/candidate', 'CandidatesController@index');
 
-Route::post('/candidate', 'CandidatesContoller@addCandidate');
+Route::post('/candidate', 'CandidatesController@addCandidate');
 
-Route::get('/candidate/create', 'CandidatesContoller@create');
+Route::get('/candidate/create', 'CandidatesController@create');
 
 Route::get('/candidate/{candidate}/edit', 'CandidatesController@edit');
 

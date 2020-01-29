@@ -29,13 +29,10 @@ class CandidateFormRequest extends Request
 
             'avatar' => 'required|image|mimes:png,jpeg,jpg',
 
-            'bio' => 'nullable|string|',
+            'bio' => 'string|',
 
-            'presidenttial' => 'nullable|boolen',
-
-            'secretary' => 'nullable|boolen',
-
-            'mp' => 'nullable|boolen'
+            'candidate_type' => 'required|string',
+           
         ];
     }
 }
