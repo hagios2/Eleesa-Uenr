@@ -14,7 +14,7 @@ class CreateToggleElectionsTable extends Migration
     {
         Schema::create('toggle_elections', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('switch_election');
+            $table->boolean('toggle')->default(false);
             $table->timestamps();
         });
     }

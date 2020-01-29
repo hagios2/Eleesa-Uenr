@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SemestersTableSeeder::class);
 
         $this->call(LevelsTableSeeder::class);
+
+        $this->call(ToggleElectionsTableSeeder::class);
     }
 }
