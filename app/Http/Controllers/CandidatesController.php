@@ -19,7 +19,7 @@ class CandidatesController extends Controller
     
     public function index()
     {
-        $candidates = Candidate::all();
+       $candidates = Candidate::all();
 
         return view('candidates.candidate', compact('candidates'));
     }
@@ -72,7 +72,7 @@ class CandidatesController extends Controller
              
         request()->file('avatar')->move(storage_path('app/public/images/candidates/'.$candidate->id.'/'), $fileNameToStore);
 
-        $candidate->avatar = '/storage/images/'.$candidate->id.'/'.$fileNameToStore;
+        $candidate->avatar = '/storage/images/candidates'.$candidate->id.'/'.$fileNameToStore;
 
         $candidate->save();
         

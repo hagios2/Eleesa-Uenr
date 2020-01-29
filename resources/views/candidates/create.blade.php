@@ -53,7 +53,7 @@
                             <label for="bio" class="col-md-4 control-label"><span class="glyphicon glyphicon-edit"></span> Bio</label>
 
                             <div class="col-md-6">
-                                <textarea id="bio" class="form-control" placeholder="Bio" name="bio" value="{{ old('bio') }}"></textarea>
+                                <textarea id="bio" class="form-control" placeholder="Bio" name="bio">{{ old('bio') }}</textarea>
 
                                 @if ($errors->has('bio'))
                                     <span class="help-block">
@@ -63,18 +63,18 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Candidate Type</label>
+                        <div class="form-group{{ $errors->has('candidate_type') ? ' has-error' : '' }}">
+                            <label for="candidate_type" class="col-md-4 control-label">Candidate Type</label>
 
                             <div class="col-md-6">
 
                                 <div class="row">
 
-                                    <input id="" type="radio" {{ old('candidate_type') == 'presidential' ? 'select': "" }} name="candidate_type" value="presidential"> Presidential
+                                    <input id="" type="radio" {{ old('candidate_type') == 'presidential' ? 'checked': "" }} name="candidate_type" value="presidential"> Presidential
 
-                                    <input id="" {{ old('candidate_type') == 'secretary' ? 'select': "" }} type="radio"  name="candidate_type" value="secretary"> Secretary
+                                    <input id="" {{ old('candidate_type') == 'secretary' ? 'checked': "" }} type="radio"  name="candidate_type" value="secretary"> Secretary
     
-                                    <input id="" type="radio" {{ old('candidate_type') == 'mp' ? 'select': "" }} name="candidate_type" value="mp"> Parlimentary
+                                    <input id="" type="radio" {{ old('candidate_type') == 'mp' ? 'checked': "" }} name="candidate_type" value="mp"> Parlimentary
 
                                 </div>
 
@@ -106,7 +106,7 @@
         if($('$t_avatar').value != null)
         {
 
-            $('div#avatar').html = '<img src=$('t_avatar').value >'; 
+            $('div#avatar').html('<img style="width:40px;height:35px;" src=$('t_avatar').value >'); 
         }
 
      
