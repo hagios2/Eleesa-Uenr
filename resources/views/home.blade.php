@@ -14,7 +14,7 @@
                         Thank you for registering with us
                     </div>
 
-                    <a href="/election">Cast Vote</a>
+                    <a href="/elections">Cast Vote</a>
                     
                 @else
 

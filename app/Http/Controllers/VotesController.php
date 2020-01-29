@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use App\Vote;
+use App\Candidate;
 
 class VotesController extends Controller
 {
@@ -25,7 +26,11 @@ class VotesController extends Controller
 
             $attributes = Vote::all();
 
-            return view('elections/election', compact('attributes'));
+           // return $attributes->where('president');
+
+            $candidates = Candidate::all();
+
+            return view('elections/election', \compact('attributes', 'candidates'));
 
         }else{
 

@@ -1,143 +1,139 @@
 @extends('layouts.app')
 
+
 @section('content')
 
-   <div class="container">
+    <div class="container">
 
-    @if ($toggleApp->toggle)
+        @if ($toggleApp->toggle)
 
-    @include('../errors.errors')
+            @include('../errors.errors')
 
-    @if(auth()->user()->vote)
+            @if(auth()->user()->vote)
 
-        <div class="jumbotron">
+                <div class="jumbotron">
 
-            <canvas id="myChart" class="offset-md-2" ></canvas>
+                    <canvas id="presidentChart" class="offset-md-2" ></canvas>
 
-        </div>
+                </div>  
 
+                <script src="{{ asset('js/Chart.min.js')}}"></script>
 
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/Chart.min.js"></script>
+                <script>
 
-        <script>
+                    // var presidential_candidate = []
 
-            var ctx = document.getElementById('myChart');
-            var myChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Joseph Adomako', 'Enoch Ofori Larbi', 'George Gbest'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [
+                    var ctx = document.getElementById('presidentChart');
+                    var myChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [@foreach($candidates->where('presidential', 1) as $candidate) "{{ $candidate->name }}", @endforeach],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: [
 
-                        @foreach ($attributes as $attribute)
+                                    @foreach($candidates->where('presidential', 1) as $candidate )
 
-                            @foreach($attribute as $key => $value)
+                                        {{ $attributes->where('president_id', $candidate->id)->count()}},
 
-                                {{ $value }},
+                                    @endforeach                              
+                                ],
 
-                            @endforeach
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
 
-                        @endforeach
-                                        ],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
 
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
 
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
+                        title: {
+                            display: true,
+                            text: 'Elections 2020',
+                            postion: 'right'
+                        },
+                        legend:{
+                            display:true,
+                            postion: 'left'
+                        },
+                        tooltips:{
+                            mode: 'point'
+                        },
 
-                title: {
-                    display: true,
-                    text: 'Elections 2020',
-                    postion: 'right'
-                },
-                legend:{
-                    display:true,
-                    postion: 'left'
-                },
-                tooltips:{
-                    mode: 'point'
-                },
+                    }
+                    });
+                </script>
 
-            }
-            });
-        </script>
+            @endif
 
-    @endif
-
-    <form method="POST" action="/elections">
-        
-        {{ csrf_field() }}
+            <form method="POST" action="/elections">
+                
+                {{ csrf_field() }}
 
 
-        <div class="form-group">
+                <div class="form-group">
 
-             <div class="card" style="width:15rem">
-            {{--  <div class="form-check">  --}}
-                {{-- <img class="card-img-top" src="/storage/images/1.jpg" alt="Jay"> --}}
-
-                <label class="card-title" for="votes"  style="text-align: center;" >
-                        <input class="form-check-input" value="Joseph Adomako" {{ auth()->user()->vote && auth()->user()->vote->candidate == "Joseph Adomako" ? "checked" : ""}} type="radio" name="candidate">
-                    Joseph Adomako
-                </label>
-            </div>
-
-
-            <div class="card" style="width:15rem">
-                {{--  <div class="form-check">  --}}
-                {{-- <img class="card-img-top" src="/storage/images/1.jpg" alt="Africa"> --}}
-
-                <label class="card-title" for="votes" style="text-align: center;" >
-                    <input class="form-check-input" value="Enoch Ofori Larbi" {{ auth()->user()->vote && auth()->user()->vote->candidate == "Enoch Ofori Larbi" ? "checked" : ""}} type="radio" name="candidate">
-                        Enoch Ofori Larbi
-                    </label>
-            </div>
-
-
-            <div class="card" style="width:15rem; margin-bottom: 10px;">
+                    <div class="panel panel-default" style="width:15rem">
                     {{--  <div class="form-check">  --}}
-                        {{-- <img class="card-img-top" src="/storage/images/1.jpg" alt="Best"> --}}
+                        {{-- <img class="card-img-top" src="/storage/images/1.jpg" alt="Jay"> --}}
 
-                        <label class="card-title" for="votes" style="text-align: center; " >
-                                <input class="form-check-input" value="George Gbest"  {{ auth()->user()->vote && auth()->user()->vote->candidate  == "George Gbest" ? "checked" : ""}} type="radio" name="candidate">
-                            George Gbest
+                        <label class="card-title" for="votes"  style="text-align: center;" >
+                                <input class="form-check-input" value="Joseph Adomako" {{ auth()->user()->vote && auth()->user()->vote->candidate == "Joseph Adomako" ? "checked" : ""}} type="radio" name="candidate">
+                            Joseph Adomako
                         </label>
+                    </div>
+
+
+                    <div class="card" style="width:15rem">
+                        {{--  <div class="form-check">  --}}
+                        {{-- <img class="card-img-top" src="/storage/images/1.jpg" alt="Africa"> --}}
+
+                        <label class="card-title" for="votes" style="text-align: center;" >
+                            <input class="form-check-input" value="Enoch Ofori Larbi" {{ auth()->user()->vote && auth()->user()->vote->candidate == "Enoch Ofori Larbi" ? "checked" : ""}} type="radio" name="candidate">
+                                Enoch Ofori Larbi
+                            </label>
+                    </div>
+
+
+                    <div class="card" style="width:15rem; margin-bottom: 10px;">
+                            {{--  <div class="form-check">  --}}
+                                {{-- <img class="card-img-top" src="/storage/images/1.jpg" alt="Best"> --}}
+
+                                <label class="card-title" for="votes" style="text-align: center; " >
+                                        <input class="form-check-input" value="George Gbest"  {{ auth()->user()->vote && auth()->user()->vote->candidate  == "George Gbest" ? "checked" : ""}} type="radio" name="candidate">
+                                    George Gbest
+                                </label>
+                    </div>
+
+                    <div>
+                        <button class="btn btn-primary"  {{ auth()->user()->vote ? "disabled" : ""}} type="submit">Vote</button>
+                    </div>
+
+                </div>
+
+            </form>
+            
+        @else
+
+            <div class="well text-center">
+
+                <h3 class="title">The page is currently not available</h3>
+
+                <p class="well">Come back later</p>
+
             </div>
+            
+        @endif
 
-            <div>
-                <button class="btn btn-primary"  {{ auth()->user()->vote ? "disabled" : ""}} type="submit">Vote</button>
-            </div>
+    </div>
 
-        </div>
-
-    </form>
-
-</div>
-
-        
-    @else
-
-        <div class="well text-center">
-
-            <h3 class="title">The page is currently not available</h3>
-
-            <p class="well">Come back later</p>
-
-        </div>
-        
-    @endif
-
-       
 @endsection
