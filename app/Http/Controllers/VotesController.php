@@ -19,22 +19,23 @@ class VotesController extends Controller
     }
 
 
-    public function index(){
+    public function index()
+    {
+
+        $candidates = Candidate::all();
 
         if(auth()->user()->vote)
         {
 
             $attributes = Vote::all();
 
-           // return $attributes->where('president');
-
-            $candidates = Candidate::all();
+           // return $attributes->where('president');            
 
             return view('elections/election', \compact('attributes', 'candidates'));
 
         }else{
 
-             return view('elections/election');
+             return view('elections/election', compact('candidates'));
         }
 
     }
@@ -44,7 +45,7 @@ class VotesController extends Controller
 
         if(auth()->user()->vote)
         {
-            return back()->withSuccess('Access Denied! You have already voted');
+            return back()->with('error', 'Access Denied! You have already voted');
         }
 
         $attributes = request()->validate([
@@ -56,7 +57,7 @@ class VotesController extends Controller
 
         //return $attributes;
 
-        Votes::create($attributes);
+        Vote::create($attributes);
 
         return redirect('/elections')->withSuccess("Your vote has been added successfully");
     }
@@ -73,20 +74,5 @@ class VotesController extends Controller
 
     }
 
-    public function jay()
-    {
-        return $this->VoteCounter("Joseph Adomako");
 
-
-    }
-
-    public function africa()
-    {
-        return $this->VoteCounter("Enoch Ofori Larbi");
-    }
-
-    public function best()
-    {
-        return $this->VoteCounter("George Gbest");
-    }
 }

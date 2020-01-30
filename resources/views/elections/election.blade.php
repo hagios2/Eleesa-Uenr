@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('content')
 
     <div class="container">
@@ -11,7 +10,7 @@
 
             @if(auth()->user()->vote)
 
-                <div class="jumbotron">
+                <div class="jumbotron text-center" style="width:60%; height:40rem;">
 
                     <canvas id="presidentChart" class="offset-md-2" ></canvas>
 
@@ -75,52 +74,127 @@
 
             @endif
 
-            <form method="POST" action="/elections">
+           <div>
+
+                <form method="POST" action="/elections">
                 
-                {{ csrf_field() }}
+                    {{ csrf_field() }}
 
+                    <div id="presidential">
 
-                <div class="form-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Presidential Elections</div>
+                        </div>
 
-                    <div class="panel panel-default" style="width:15rem">
-                    {{--  <div class="form-check">  --}}
-                        {{-- <img class="card-img-top" src="/storage/images/1.jpg" alt="Jay"> --}}
+                        @forelse ($candidates->where('presidential', 1) as $candidate)
 
-                        <label class="card-title" for="votes"  style="text-align: center;" >
-                                <input class="form-check-input" value="Joseph Adomako" {{ auth()->user()->vote && auth()->user()->vote->candidate == "Joseph Adomako" ? "checked" : ""}} type="radio" name="candidate">
-                            Joseph Adomako
-                        </label>
+                            <div class="panel panel-default">
+
+                                <div class="panel-body">
+
+                                    <div class="form-group">
+
+                                    <img src="{{$candidate->avatar}}" style="width:20rem;" alt="" srcset=""><br>
+
+                                        <input class="form-check-input" value="{{ $candidate->id}}"  {{ auth()->user()->vote && auth()->user()->vote->prez_candidate == $candidate ? "checked" : ""  }} type="radio" name="candidate">
+                                        
+                                        <label for="Presidential_Candidate">{{$candidate->name}}</label>
+
+                                    </div>
+
+                                </div><br>
+
+                            </div>
+
+                        @empty
+
+                            <h3 class="title">Presidential Aspirant not available</h3>
+                        
+                        @endforelse
+
+                        <a id="next_to_sec" class="pull-right btn btn-primary">Next >></a>
+                        
+                    </div> 
+
+                    <div id="gen_sec" style="display:none;">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">General Secretary Elections</div>
+                        </div>
+
+                        @forelse ($candidates->where('secretary', 1) as $candidate)
+
+                            <div class="panel panel-default">
+
+                                <div class="panel-body">
+
+                                    <div class="form-group">
+
+                                    <img src="{{$candidate->avatar}}" style="width:20rem;" alt="" srcset=""><br>
+
+                                        <input class="form-check-input" value="{{ $candidate->id}}"  {{ auth()->user()->vote && auth()->user()->vote->sec_candidate == $candidate ? "checked" : ""  }} type="radio" name="candidate">
+                                        
+                                        <label for="Presidential_Candidate">{{$candidate->name}}</label>
+
+                                    </div>
+
+                                </div><br>
+
+                            </div>
+
+                        @empty
+
+                            <h3 class="title">General Secretary not available</h3>
+                        
+                        @endforelse
+
+                        <a id="prev_to_prez" class="pull-left btn btn-primary"><< Previous</a>
+
+                        <a id="next_to_mp" class="pull-right btn btn-primary">Next >></a>
+                        
                     </div>
 
+                    <div id="mp" style="display:none;">
 
-                    <div class="card" style="width:15rem">
-                        {{--  <div class="form-check">  --}}
-                        {{-- <img class="card-img-top" src="/storage/images/1.jpg" alt="Africa"> --}}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Parliamentary Elections</div>
+                        </div>
 
-                        <label class="card-title" for="votes" style="text-align: center;" >
-                            <input class="form-check-input" value="Enoch Ofori Larbi" {{ auth()->user()->vote && auth()->user()->vote->candidate == "Enoch Ofori Larbi" ? "checked" : ""}} type="radio" name="candidate">
-                                Enoch Ofori Larbi
-                            </label>
+                        @forelse ($candidates->where('mp', 1) as $candidate)
+
+                            <div class="panel panel-default">
+
+                                <div class="panel-body">
+
+                                    <div class="form-group">
+
+                                    <img src="{{$candidate->avatar}}" style="width:20rem;" alt="" srcset=""><br>
+
+                                        <input class="form-check-input" value="{{ $candidate->id}}"  {{ auth()->user()->vote && auth()->user()->vote->mp_candidate == $candidate ? "checked" : ""  }} type="radio" name="candidate">
+                                        
+                                        <label for="Presidential_Candidate">{{$candidate->name}}</label>
+
+                                    </div><br>
+
+                                </div><br>
+
+                            </div>
+
+                        @empty
+
+                            <h3 class="title">Parliamentary Candidate(s) not available</h3>
+                        
+                        @endforelse
+
+                        <button class="btn btn-success pull-right"  {{ auth()->user()->vote ? "disabled" : ""}} type="submit">Vote >></button>
+                          
+                        <a id="prev_to_sec" class="pull-left btn btn-primary"><< Previous</a>
+                        
                     </div>
 
+                </form>
 
-                    <div class="card" style="width:15rem; margin-bottom: 10px;">
-                            {{--  <div class="form-check">  --}}
-                                {{-- <img class="card-img-top" src="/storage/images/1.jpg" alt="Best"> --}}
-
-                                <label class="card-title" for="votes" style="text-align: center; " >
-                                        <input class="form-check-input" value="George Gbest"  {{ auth()->user()->vote && auth()->user()->vote->candidate  == "George Gbest" ? "checked" : ""}} type="radio" name="candidate">
-                                    George Gbest
-                                </label>
-                    </div>
-
-                    <div>
-                        <button class="btn btn-primary"  {{ auth()->user()->vote ? "disabled" : ""}} type="submit">Vote</button>
-                    </div>
-
-                </div>
-
-            </form>
+            </div>
             
         @else
 
@@ -135,5 +209,47 @@
         @endif
 
     </div>
+
+    @section('extra-js')
+
+        function toggleDiv(showDiv, hideDiv)
+        {
+
+            $(showDiv).show();
+
+            $(hideDiv).hide();
+
+        }
+
+    
+        $('a#next_to_sec').click(function(){
+
+            toggleDiv('div#gen_sec', 'div#presidential');
+
+        });
+
+
+        $('a#next_to_mp').click(function(){
+
+            toggleDiv('div#mp', 'div#gen_sec');
+
+        });
+
+
+        $('a#prev_to_sec').click(function(){
+
+            toggleDiv('div#gen_sec', 'div#mp');
+
+        });
+
+
+        $('a#prev_to_prez').click(function(){
+
+            toggleDiv('div#presidential', 'div#gen_sec');
+
+        });
+
+
+    @endsection
 
 @endsection
