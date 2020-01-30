@@ -18,22 +18,20 @@
                 
                 <div id="gen_sec" class="jumbotron pull-center" style="width:60%; height:40rem; display:none">
 
-                    <canvas id="presidentChart" class="offset-md-2" ></canvas>
+                    <canvas id="gen_sec_Chart" class="offset-md-2" ></canvas>
 
                 </div> 
 
                 <div id="mp" class="jumbotron pull-center" style="width:60%; height:40rem; display:none">
 
-                    <canvas id="presidentChart" class="offset-md-2" ></canvas>
+                    <canvas id="mpChart" class="offset-md-2" ></canvas>
 
                 </div> 
 
                 <script src="{{ asset('js/Chart.min.js')}}"></script>
 
                 <script>
-
-                    // var presidential_candidate = []
-
+                
                     var ctx = document.getElementById('presidentChart');
                     var myChart = new Chart(ctx, {
                     type: 'doughnut',
@@ -50,18 +48,18 @@
                                     @endforeach                              
                                 ],
 
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
 
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
 
-                            ],
+                        ],
                             borderWidth: 1
                         }]
                     },
@@ -82,7 +80,113 @@
 
                     }
                     });
+
+
+                    var ctx = document.getElementById('gen_sec_Chart');
+                    var myChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [@foreach($candidates->where('secretary', 1) as $candidate) "{{ $candidate->name }}", @endforeach],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: [
+
+                                    @foreach($candidates->where('secretary', 1) as $candidate )
+
+                                        {{ $attributes->where('secretary_id', $candidate->id)->count()}},
+
+                                    @endforeach                              
+                                ],
+
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+
+                        ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+
+                        title: {
+                            display: true,
+                            text: 'Elections 2020',
+                            postion: 'right'
+                        },
+                        legend:{
+                            display:true,
+                            postion: 'left'
+                        },
+                        tooltips:{
+                            mode: 'point'
+                        },
+
+                    }
+                    });
+
+
+
+                    var ctx = document.getElementById('mpChart');
+                    var myChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [@foreach($candidates->where('mp', 1) as $candidate) "{{ $candidate->name }}", @endforeach],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: [
+
+                                    @foreach($candidates->where('mp', 1) as $candidate )
+
+                                        {{ $attributes->where('mp_id', $candidate->id)->count()}},
+
+                                    @endforeach                              
+                                ],
+
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+
+                        ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+
+                        title: {
+                            display: true,
+                            text: 'Elections 2020',
+                            postion: 'right'
+                        },
+                        legend:{
+                            display:true,
+                            postion: 'left'
+                        },
+                        tooltips:{
+                            mode: 'point'
+                        },
+
+                    }
+                    });
+
+
+            
                 </script>
+
+                   
 
             @endif
 
@@ -219,6 +323,7 @@
             </div>
             
         @endif
+
 
     </div>
 
