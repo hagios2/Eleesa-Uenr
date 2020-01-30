@@ -6,7 +6,7 @@
     
         <a href="/download/constitution" class="btn btn-default">Download constitution</a><br>
     
-        <div style="margin-left:40%">Copyright &copy 2019, ELEESA-UENR</div>  <br>
+        <div class="text-center">Copyright &copy 2019, ELEESA-UENR |      Developed by :   <a href="mailto:hagioswilson@gmail.com">Oteng</a> </div>  <br>
 
         <div class="row">
 

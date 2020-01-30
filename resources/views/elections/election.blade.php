@@ -10,11 +10,23 @@
 
             @if(auth()->user()->vote)
 
-                <div class="jumbotron text-center" style="width:60%; height:40rem;">
+                <div id="presidential" class="jumbotron pull-center" style="width:60%; height:40rem;">
 
                     <canvas id="presidentChart" class="offset-md-2" ></canvas>
 
-                </div>  
+                </div> 
+                
+                <div id="gen_sec" class="jumbotron pull-center" style="width:60%; height:40rem; display:none">
+
+                    <canvas id="presidentChart" class="offset-md-2" ></canvas>
+
+                </div> 
+
+                <div id="mp" class="jumbotron pull-center" style="width:60%; height:40rem; display:none">
+
+                    <canvas id="presidentChart" class="offset-md-2" ></canvas>
+
+                </div> 
 
                 <script src="{{ asset('js/Chart.min.js')}}"></script>
 
@@ -96,7 +108,7 @@
 
                                     <img src="{{$candidate->avatar}}" style="width:20rem;" alt="" srcset=""><br>
 
-                                        <input class="form-check-input" value="{{ $candidate->id}}"  {{ auth()->user()->vote && auth()->user()->vote->prez_candidate == $candidate ? "checked" : ""  }} type="radio" name="candidate">
+                                        <input class="form-check-input" value="{{ $candidate->id}}"  {{ auth()->user()->vote && auth()->user()->vote->prez_candidate == $candidate ? "checked" : ""  }} type="radio" name="president_id">
                                         
                                         <label for="Presidential_Candidate">{{$candidate->name}}</label>
 
@@ -132,9 +144,9 @@
 
                                     <img src="{{$candidate->avatar}}" style="width:20rem;" alt="" srcset=""><br>
 
-                                        <input class="form-check-input" value="{{ $candidate->id}}"  {{ auth()->user()->vote && auth()->user()->vote->sec_candidate == $candidate ? "checked" : ""  }} type="radio" name="candidate">
+                                        <input class="form-check-input" value="{{ $candidate->id}}"  {{ auth()->user()->vote && auth()->user()->vote->sec_candidate == $candidate ? "checked" : ""  }} type="radio" name="secretary_id">
                                         
-                                        <label for="Presidential_Candidate">{{$candidate->name}}</label>
+                                        <label for="General_Secretary">{{$candidate->name}}</label>
 
                                     </div>
 
@@ -170,9 +182,9 @@
 
                                     <img src="{{$candidate->avatar}}" style="width:20rem;" alt="" srcset=""><br>
 
-                                        <input class="form-check-input" value="{{ $candidate->id}}"  {{ auth()->user()->vote && auth()->user()->vote->mp_candidate == $candidate ? "checked" : ""  }} type="radio" name="candidate">
+                                        <input class="form-check-input" value="{{ $candidate->id}}"  {{ auth()->user()->vote && auth()->user()->vote->mp_candidate == $candidate ? "checked" : ""  }} type="radio" name="mp_id">
                                         
-                                        <label for="Presidential_Candidate">{{$candidate->name}}</label>
+                                        <label for="Parliamentary_Candidate">{{$candidate->name}}</label>
 
                                     </div><br>
 

@@ -20,7 +20,7 @@
 
                         <div class="panel-body">
 
-                            <img style="width:22rem; height:20rem;" src="{{$candidate->avatar}}" alt=""><br>
+                            <img style="width:22rem; height:20rem;" src="{{$candidate->avatar}}" alt=""><br><br>
 
                             <p class="title">{{ $candidate->name }}</p>
                             
@@ -51,7 +51,7 @@
 
                         <div class="panel-body">
 
-                            <img style="width:22rem; height:20rem;" src="{{$candidate->avatar}}" alt=""><br>
+                            <img style="width:22rem; height:20rem;" src="{{$candidate->avatar}}" alt=""><br><br>
 
                             <p class="title">{{ $candidate->name }}</p>
                             
@@ -80,7 +80,7 @@
 
                         <div class="panel-body">
 
-                            <img style="width:22rem; height:20rem;" src="{{$candidate->avatar}}" alt=""><br>
+                            <img style="width:22rem; height:20rem;" src="{{$candidate->avatar}}" alt=""><br><br>
 
                             <p class="title">{{ $candidate->name }}</p>
                             
@@ -110,37 +110,37 @@
 
         $('a#next_to_sec').click(function(){
 
-            $('div#presidential').hide();
-
-            $('div#secretary').show();
+            toggleCandidates('div#secretary', 'div#presidential');
 
         });
         
         
         $('a#next_to_mp').click(function(){
 
-            $('div#secretary').hide();
-
-            $('div#mp').show();
+            toggleCandidates('div#mp', 'div#secretary');
 
         });
         
         $('a#prev_to_prez').click(function(){
 
-            $('div#secretary').hide();
-
-            $('div#presidential').show();
+            toggleCandidates('div#presidential', 'div#secretary');
 
         });  
 
 
         $('a#prev_to_sec').click(function(){
 
-            $('div#secretary').show();
-
-            $('div#mp').hide();
+            toggleCandidates('div#secretary', 'div#mp');
 
         });  
+
+
+        function toggleCandidates(showDiv, hideDiv)
+        {
+            $(showDiv).show();
+
+            $(hideDiv).hide();
+        }
 
     @endsection 
 

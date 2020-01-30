@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\ElectionFormRequest;
 use App\User;
 use App\Vote;
 use App\Candidate;
@@ -13,9 +14,7 @@ class VotesController extends Controller
 {
     public function __construct()
     {
-
         $this->middleware('auth');
-
     }
 
 
@@ -27,9 +26,7 @@ class VotesController extends Controller
         if(auth()->user()->vote)
         {
 
-            $attributes = Vote::all();
-
-           // return $attributes->where('president');            
+            $attributes = Vote::all();    
 
             return view('elections/election', \compact('attributes', 'candidates'));
 
@@ -41,37 +38,20 @@ class VotesController extends Controller
     }
 
 
-    public function store(){
+    public function store(ElectionFormRequest $request){
 
         if(auth()->user()->vote)
         {
             return back()->with('error', 'Access Denied! You have already voted');
         }
 
-        $attributes = request()->validate([
-
-            'candidate' => 'required',
-        ]);
+        $attributes = $request->all();
 
         $attributes['user_id'] = auth()->id();
-
-        //return $attributes;
 
         Vote::create($attributes);
 
         return redirect('/elections')->withSuccess("Your vote has been added successfully");
-    }
-
-
-    public function VoteCounter($candidate)
-    {
-       $votes = Votes::where('candidate', $candidate)->count();
-
-       //$votes = Votes::where('candidate', $candidate);
-
-       return [$candidate => $votes];
-
-
     }
 
 
