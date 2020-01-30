@@ -28,7 +28,7 @@ class AdminFormRequest extends Request
             return [
                 'course' => 'required',
                 'Book' => ['mimes:pdf'],
-                'Slide' => ['mimes:pdf'],
+                //'Slide' => ['mimes:pdf'],
                 'Pasco' => ['mimes:pdf'],
                 
             ];
@@ -42,7 +42,7 @@ class AdminFormRequest extends Request
                 'course' => ['required', 'string'],
                 'course_code' => ['required', 'string'],
                 'Book' => ['mimes:pdf'],
-                'Slide' => ['mimes:pdf'],
+                //'Slide' => ['mimes:pdf'],
                 'Pasco' => ['mimes:pdf'],
             ];
         }
