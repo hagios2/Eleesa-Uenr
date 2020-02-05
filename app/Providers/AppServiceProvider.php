@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
             
-        view()->composer('elections.election', function($view){
+        view()->composer(['elections.election', 'elections.policy'], function($view){
 
             $view->with('toggleApp', \App\ToggleElection::find(1));
         });

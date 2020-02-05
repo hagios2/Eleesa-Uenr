@@ -28,4 +28,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Vote::class);
     }
+
+    public function policy()
+    {
+        return $this->hasOne(ElectionPolicy::class);
+    }
 }

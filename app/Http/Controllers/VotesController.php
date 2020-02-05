@@ -9,6 +9,7 @@ use App\Http\Requests\ElectionFormRequest;
 use App\User;
 use App\Vote;
 use App\Candidate;
+use App\ElectionPolicy;
 
 class VotesController extends Controller
 {
@@ -20,6 +21,11 @@ class VotesController extends Controller
 
     public function index()
     {
+        if(!auth()->user()->policy)
+        {
+            return back()->with('error', 'Access Denied! Agree to binding document and click next');
+        }
+
 
         $candidates = Candidate::all();
 
@@ -54,5 +60,27 @@ class VotesController extends Controller
         return redirect('/elections')->withSuccess("Your vote has been added successfully");
     }
 
+    public function electionPolicy()
+    {
+        if(auth()->user()->policy && auth()->user()->policy->agree == 1)
+        {
+            return back()->with('info', 'Policy accepted already!');
+        }
 
+        ElectionPolicy::create([
+
+            'user_id' => auth()->id(),
+
+            'agree' => true
+        ]);
+
+        return back()->with('success', 'Agreement saved! click next for the election page');
+    }
+
+    public function getElectionPolicy()
+    {
+        
+        return view('elections.policy');
+    
+    }
 }

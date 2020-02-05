@@ -49,8 +49,9 @@ Route::get('/elections', 'VotesController@index');
 
 Route::post('/elections', 'VotesController@store');
 
-// Route::get('/election', 'ElectionController@index');
-/*Route::get('/election', 'ElectionController@index'); */
+Route::post('accept-policy', 'VotesController@electionPolicy');
+
+Route::get('election-policy', 'VotesController@getElectionPolicy');
 
 Route::get('/candidate', 'CandidatesController@index');
 
