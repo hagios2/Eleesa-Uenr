@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('year');
             $table->unsignedInteger('program_id');
+            $table->boolean('isAdmin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

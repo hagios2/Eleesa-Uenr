@@ -79,7 +79,8 @@ class VotesController extends Controller
 
     public function getElectionPolicy()
     {
-        
+        return auth()->user()->isAdmin;
+
         return view('elections.policy');
     
     }

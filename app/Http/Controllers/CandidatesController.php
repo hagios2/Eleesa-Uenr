@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Candidate;
 use App\Http\Requests\CandidateFormRequest;
+use App\ToggleElection;
 use App\Http\Requests;
 
 
@@ -13,7 +14,7 @@ class CandidatesController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('auth');
+         $this->middleware('isAdmin');
     }
 
     
@@ -76,6 +77,15 @@ class CandidatesController extends Controller
 
         $candidate->save();
         
+    }
+
+    public function toggleElection(Request $request)
+    {
+        $toggleapp = ToggleElection::find(1);
+
+        //$appToggle->
+
+        $request->has('toggle') && $toggleapp->toggle == false ? $toggleapp->update(['toggle' => true]) : $toggleapp->update(['toggle' => false]);
     }
 
 }

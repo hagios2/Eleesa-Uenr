@@ -25,6 +25,7 @@ class PagesController extends Controller
 
     public function elections_zone()
     {
+
         return view('elections.election');
     }
 

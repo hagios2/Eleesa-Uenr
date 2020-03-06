@@ -93,7 +93,7 @@
 
   
    {{--  <script src="/jquery3.js"></script> --}}
-   @yield('chart-js')
+{{--    @yield('chart-js') --}}
 
     <script>
         
