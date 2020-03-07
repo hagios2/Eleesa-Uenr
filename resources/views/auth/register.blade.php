@@ -89,11 +89,11 @@
                                 </div>
                             </div>
 
-                        <div class="alert alert-info form-group" style="width:60%; margin-left:20rem;">
+                        <div class="alert text-center alert-info form-group" style="margin: 0 auto;">
 
                             <label><span class="glyphicon glyphicon-info-sign"></span> We recommed using your reference number as password</label>
         
-                        </div>
+                        </div><br>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>

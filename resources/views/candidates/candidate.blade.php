@@ -1,8 +1,106 @@
 @extends('layouts.app')
 
+
+@section('extra-css')
+
+<style>
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+} 
+
+</style>
+
+@endsection
+
 @section('content')
 
+<div class="container">
+    <ol class="breadcrumb">
+      <li class="active">Dashboard</li>
+    </ol> 
+  </div>
+
+
+
     @include('../errors.errors')
+
+
+    <div class="pull-right">
+
+        <form action="/start-election" method="post">
+      
+            {{ csrf_field() }}
+            {{ method_field('PATCH') }}
+       
+            <!-- Rounded switch -->
+            <strong>Election Switch:</strong>  &emsp; <label class="switch">
+                <input type="checkbox" name="toggle" {{ $toggleApp->toggle ? 'checked' :'' }} onchange="this.form.submit();">
+                <span class="slider round"></span>
+        
+            </label>
+  
+        </form>
+      
+      </div><br><br>
            
     <div>
 
@@ -16,30 +114,56 @@
 
                     <div class="panel-heading">Presidential Candidate</div>
 
+                </div> <br>
+
                     @forelse ($candidates->where('presidential', 1) as $candidate)
 
-                        <div class="panel-body">
+                        <div class="col-xs-12 col-md-10 col-lg-10 col-sm-12">
 
-                            <img style="width:22rem; height:20rem;" src="{{$candidate->avatar}}" alt=""><br><br>
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-6  col-md-4 col-lg-4">
+                                    <img style="max-height:200px; max-width:100%; margin-bottom:2rem;" src="{{$candidate->avatar}}" alt=""> <br>
+                                   
+                                <p class="title"> <strong>{{ $candidate->name }}</strong> <a href="/candidate/{{$candidate->id}}/edit" class="btn btn-outline-info">Edit info</a>
+                                </p> 
+                                </div>
+                                <div class="col-sm-5 col-lg-6 col-md-6 col-xs-5">
 
-                            <p class="title">{{ $candidate->name }}</p>
+                                    <div style="padding:1rem;">
+
+                                        @if($candidate->bio)
+
+                                            <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                            <p>{{$candidate->bio}}</p>
+                                            <i class="fa fa-quote-right" aria-hidden="true"></i>
+
+                                        @endif
+                                    
+                                    </div>
+                                       
+                                </div>
+                            </div>
+    
+                        </div> <hr style="width:70%;">
+                     
+                    @empty
+
+                        <br>
+
+                        <div class="lead text-center">
+
+                            <h5 >No Presidential Candidate(s) added</h5>
                             
                         </div>
 
-                    @empty
-
-                        <h3>No Presidential Candidate(s) added</h3>
-
                     @endforelse
 
+                    <br>
 
-                </div>
-                
-                <br>
+                    <a id="next_to_sec" class="btn btn-primary pull-right">Next >></a>
 
-                <a id="next_to_sec" class="btn btn-primary pull-right">Next >></a>
+                </div> 
        
-            </div>
 
             <div id="secretary" style="display:none;">
 
@@ -47,23 +171,51 @@
 
                     <div class="panel-heading"> Secretarial Candidate</div>
 
+                </div>
+
                     @forelse ($candidates->where('secretary', 1) as $candidate)
 
-                        <div class="panel-body">
+                        <div class="col-xs-12 col-md-10 col-lg-10 col-sm-12">
 
-                            <img style="width:22rem; height:20rem;" src="{{$candidate->avatar}}" alt=""><br><br>
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-6  col-md-4 col-lg-4">
+                                    <img style="max-height:200px; max-width:100%; margin-bottom:2rem;" src="{{$candidate->avatar}}" alt=""> <br>
+                                
+                                    <p class="title"> <strong>{{ $candidate->name }}</strong><a href="/candidate/{{$candidate->id}}/edit" class="btn btn-outline-info">Edit info</a></p>
+                                    
+                                </div>
+                                <div class="col-sm-5 col-lg-6 col-md-6 col-xs-5">
 
-                            <p class="title">{{ $candidate->name }}</p>
-                            
-                        </div>
+                                    <div style="padding:1rem;">
+
+                                        @if($candidate->bio)
+
+                                            <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                            <p>{{$candidate->bio}}</p>
+                                            <i class="fa fa-quote-right" aria-hidden="true"></i>
+
+                                        @endif
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                        </div> <hr style="width:70%;">
 
                     @empty
 
-                        <h3>No General Secretary Candidate added</h3>
+                    <br>
+
+                    <div class="lead text-center">
+
+                        <h5 >No Secretarial Candidate(s) added</h5>
+                        
+                    </div>
                             
                     @endforelse
 
-                </div><br>
+                <br>
 
                 <a id="prev_to_prez" class="btn btn-primary pull-left"><< Previous</a>
                 <a id="next_to_mp" class="btn btn-primary pull-right">Next >></a>
@@ -76,23 +228,51 @@
 
                     <div class="panel-heading">Parliamentary Candidate(s)</div>
 
+                </div>
+
                     @forelse ($candidates->where('mp', 1) as $candidate)
 
-                        <div class="panel-body">
+                    <div class="col-xs-12 col-md-10 col-lg-10 col-sm-12">
 
-                            <img style="width:22rem; height:20rem;" src="{{$candidate->avatar}}" alt=""><br><br>
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-6  col-md-4 col-lg-4">
+                                <img style="max-height:200px; max-width:100%; margin-bottom:2rem;" src="{{$candidate->avatar}}" alt=""> <br>
+                               
+                                <p class="title"> <strong>{{ $candidate->name }}</strong><a href="/candidate/{{$candidate->id}}/edit" class="btn btn-outline-info">Edit info</a></p>
+                                
+                            </div>
+                            <div class="col-sm-5 col-lg-6 col-md-6 col-xs-5">
 
-                            <p class="title">{{ $candidate->name }}</p>
-                            
+                                <div style="padding:1rem;">
+                                   
+                                    @if($candidate->bio)
+
+                                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                        <p>{{$candidate->bio}}</p>
+                                        <i class="fa fa-quote-right" aria-hidden="true"></i>
+
+                                    @endif    
+
+                                </div>
+                                   
+                            </div>
                         </div>
+
+                    </div> <hr style="width:70%;">
 
                     @empty
 
-                    <h3>No Parliamentary Candidate(s) added</h3>
+                    <br>
+
+                    <div class="lead text-center">
+
+                        <h5 >No Parliamentary Candidate(s) added</h5>
+                        
+                    </div>
                             
                     @endforelse
 
-                </div><br>
+                <br>
 
                 <a id="prev_to_sec" class="btn btn-primary pull-left"><< Previous</a>
             

@@ -48,11 +48,17 @@ class CandidatesController extends Controller
 
     public function update(Request $request, Candidate $candidate)
     {
-        $candidate->update($request->all());
+        
+        $updatedcandidate = $request->except('candidate_type');
+
+        $updatedcandidate[$request->candidate_type] = true;
+
+
+        $candidate->update($updatedcandidate);
 
         $this->storeCandidateAvatar($candidate);
 
-        return redirect('/candidate')->with('sucess', 'Updated successful');
+        return redirect('/candidate')->withSucess('Updated successful');
     }
 
 
@@ -66,16 +72,20 @@ class CandidatesController extends Controller
 
     public function storeCandidateAvatar(Candidate $candidate)
     {
-         //get file name
-        $fileNameToStore = request()->file('avatar')->getClientOriginalName();
 
-         //path to store file
-             
-        request()->file('avatar')->move(storage_path('app/public/images/candidates/'.$candidate->id.'/'), $fileNameToStore);
+        if(request()->hasFile('avatar'))
+        {
+                  //get file name
+            $fileNameToStore = request()->file('avatar')->getClientOriginalName();
 
-        $candidate->avatar = '/storage/images/candidates/'.$candidate->id.'/'.$fileNameToStore;
+            //path to store file
+                
+            request()->file('avatar')->move(storage_path('app/public/images/candidates/'.$candidate->id.'/'), $fileNameToStore);
 
-        $candidate->save();
+            $candidate->avatar = '/storage/images/candidates/'.$candidate->id.'/'.$fileNameToStore;
+
+            $candidate->save();
+        }
         
     }
 
@@ -86,6 +96,15 @@ class CandidatesController extends Controller
         //$appToggle->
 
         $request->has('toggle') && $toggleapp->toggle == false ? $toggleapp->update(['toggle' => true]) : $toggleapp->update(['toggle' => false]);
+
+        $switch = $toggleapp->toggle ? 'ON' : 'OFF';
+
+        return back()->with('info', 'Toggled ' .$switch);
+    }
+
+    public function edit(Candidate $candidate)
+    {
+        return view('candidates.candidate_edit', compact('candidate'));
     }
 
 }

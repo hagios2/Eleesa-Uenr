@@ -9,12 +9,12 @@
             @include('../errors.errors')
 
 
-            <div id="policy" style="width:80%;" {{-- class="text-center" --}}>
+            <div id="policy" class="col-md-12 col-xs-12 col-sm-12">
 
 
-                <h1 class="title">
+                <h2 class="title">
                   <i class="glyphicon glyphicon-file"></i>  Binding Document
-                </h1>
+                </h2>
 
                 <p style="text-align:justify;">
                     Terms and Conditions agreements act as a legal contract between you (the company) who has the website or mobile app and the user who access your website and mobile app.
@@ -49,11 +49,11 @@
 
         @else
 
-            <div class="well text-center">
+            <div style="margin: 0 auto;" class="well text-center col-xs-10 col-sm-10">
 
-                <h3 class="title">The page is currently not available</h3>
+                <h5 class="title">The page is currently not available</h5>
 
-                <p class="well">Come back later</p>
+                <p>Come back later</p>
 
             </div>
 

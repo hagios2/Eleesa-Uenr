@@ -61,6 +61,11 @@ Route::get('/candidate/create', 'CandidatesController@create');
 
 Route::get('/candidate/{candidate}/edit', 'CandidatesController@edit');
 
+Route::patch('/candidate/{candidate}/update', 'CandidatesController@update');
+
 Route::patch('/candidate/{candidate}', 'CandidatesController@update');
 
-Route::delete('/candidate/{candidate}', 'CandidatesController@removeCandidate');
+Route::delete('/candidate/{candidate}/delete', 'CandidatesController@removeCandidate');
+
+Route::patch('/start-election', 'CandidatesController@toggleElection');
+
